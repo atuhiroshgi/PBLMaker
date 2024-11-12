@@ -15,8 +15,8 @@ public class GridCell : MonoBehaviour
     private Sprite[] cellSprites;
 
     private Collider2D col;
-    private GameObject placedObject;        //このセルの上に存在するオブジェクトを格納するためのメンバ
-    private SpriteRenderer spriteRenderer;  //このセルの見た目を変更するため
+    private GameObject placedObject;        // このセルの上に存在するオブジェクトを格納するためのメンバ
+    private SpriteRenderer spriteRenderer;  // このセルの見た目を変更するため
 
     private void Awake()
     {
@@ -41,12 +41,14 @@ public class GridCell : MonoBehaviour
     {
         if (spriteRenderer == null) return;
         
-        //ブロックに応じたSpriteを設定
+        // ブロックに応じたSpriteを設定
         spriteRenderer.sprite = blockType == -1 ? emptySprite : cellSprites[blockType];
-        //色と透明度を設定
+        // 色と透明度を設定
         spriteRenderer.color = blockType == -1 ? new Color(0, 0, 0, 120f / 255f) : Color.white;
-        //コライダーのトリガー設定
+        // コライダーのトリガー設定
         col.isTrigger = blockType == -1;
+
+        this.gameObject.tag = blockType == -1 ? "Untagged" : "Ground";
     }
 
     /// <summary>
@@ -55,7 +57,7 @@ public class GridCell : MonoBehaviour
     /// <param name="newObjectPrefab"></param>
     public void SetPlacedObject(GameObject newObjectPrefab)
     {
-        //既に配置済みのオブジェクトがあれば削除
+        // 既に配置済みのオブジェクトがあれば削除
         if(placedObject != null)
         {
             Destroy(placedObject);

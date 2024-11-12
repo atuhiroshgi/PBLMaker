@@ -59,11 +59,11 @@ public class GridGenerator : MonoBehaviour
                 cellObj.name = $"GridCell ({x}, {y})";
 
                 // Grid‚ÉF‚ğ•t‚¯‚é
-                if(x <= 2 && y == 1)
+                if(x <= 3 && y == 2)
                 {
                     cell.SetBlockType(0);
                 }
-                else if(x <= 2 && y == 0)
+                else if(x <= 3 && y < 2)
                 {
                     cell.SetBlockType(1);
                 }
