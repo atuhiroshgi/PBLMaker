@@ -58,8 +58,19 @@ public class GridGenerator : MonoBehaviour
                 // 位置情報を設定（セルのインスペクター上で確認できる）
                 cellObj.name = $"GridCell ({x}, {y})";
 
-                // x座標とy座標のプロパティを設定
-                cell.SetBlockType(-1);  // 初期化時は空セルに設定
+                // Gridに色を付ける
+                if(x <= 2 && y == 1)
+                {
+                    cell.SetBlockType(0);
+                }
+                else if(x <= 2 && y == 0)
+                {
+                    cell.SetBlockType(1);
+                }
+                else
+                {
+                    cell.SetBlockType(-1);
+                }
 
                 // グリッド配列に格納
                 gridCells[x, y] = cell;
