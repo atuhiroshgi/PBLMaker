@@ -96,5 +96,10 @@ public class BlockPlacer : MonoBehaviour
         //重なっているオブジェクトが見つからなかった
         return false;
     }
+
+    public void SetBlockType(int blockType)
+    {
+        this.blockType = blockType;
+    }
 }
 
