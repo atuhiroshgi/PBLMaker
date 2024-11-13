@@ -8,25 +8,15 @@ public class BlockPlacer : MonoBehaviour
     private LayerMask gridCellLayer;
     [SerializeField, Header("配置するブロックタイプ")]
     private int blockType = 0;
+    [SerializeField, Header("重なっている間ブロックを置いてほしくないUI")]
+    private GameObject[] uiObjects;
 
-    private void Start()
+    private async void Update()
     {
-        // マウスクリックを監視する非同期タスクを開始
-        MonitorMouseClickAsync().Forget();
-    }
+        if (IsPointerOverUIObject()) return;
 
-    /// <summary>
-    /// マウスクリックを監視し、クリックや長押し時にブロックを配置する非同期処理
-    /// </summary>
-    /// <returns></returns>
-    private async UniTaskVoid MonitorMouseClickAsync()
-    {
-        while (true)
+        if (Input.GetMouseButtonDown(0))
         {
-            // クリックがあるまで待機
-            await UniTask.WaitUntil(() => Input.GetMouseButtonDown(0));
-
-            // クリックや長押し中は、ブロック配置を続行
             await PlaceBlocksWhileMouseHeld();
         }
     }
@@ -60,12 +50,51 @@ public class BlockPlacer : MonoBehaviour
         // GridCellコンポーネントを取得
         if (hit.collider != null)
         {
+            //Buttonクラスに重なっているときはブロックを置かない
+            Player player = hit.collider.gameObject.GetComponent<Player>();
+            Button button = hit.collider.GetComponent<Button>();
+            if(button != null)
+            {
+                return;
+            }
+
             GridCell cell = hit.collider.GetComponent<GridCell>();
             if (cell != null)
             {
                 cell.SetBlockType(blockType);
             }
         }
+    }
+
+    /// <summary>
+    /// マウスポインタがUI要素に重なっているかどうかを確認するメソッド
+    /// </summary>
+    /// <returns>重なっているか</returns>
+    private bool IsPointerOverUIObject()
+    {
+        // Raycastを使ってUIを検出
+        UnityEngine.EventSystems.PointerEventData eventDataCurrentPosition = new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current)
+        {
+            position = Input.mousePosition
+        };
+
+        var results = new System.Collections.Generic.List<UnityEngine.EventSystems.RaycastResult>();
+        UnityEngine.EventSystems.EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+
+        // UIオブジェクト配列に含まれているかをチェック
+        foreach (var result in results)
+        {
+            foreach (var uiObject in uiObjects)
+            {
+                if (result.gameObject == uiObject)
+                {
+                    //重なっているオブジェクトが見つかった
+                    return true;
+                }
+            }
+        }
+        //重なっているオブジェクトが見つからなかった
+        return false;
     }
 }
 

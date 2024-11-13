@@ -27,7 +27,7 @@ public class GridGenerator : MonoBehaviour
     /// <summary>
     /// 指定された幅と高さのグリッドを生成
     /// </summary>
-    private void GenerateGrid()
+    public void GenerateGrid()
     {
         // グリッドサイズに基づいて2次元配列を初期化
         gridCells = new GridCell[width, height];
@@ -93,6 +93,25 @@ public class GridGenerator : MonoBehaviour
         else
         {
             Debug.LogWarning("指定されたセルの位置が範囲外です");
+        }
+    }
+
+    /// <summary>
+    /// 全てのGridCellクラスがアタッチされたオブジェクトを削除
+    /// </summary>
+    public void ClearAllGridCells()
+    {
+        // 配列を順に確認して全てのGridCellを削除
+        for(int x = 0; x < width; x++)
+        {
+            for(int y = 0; y < height; y++)
+            {
+                if (gridCells[x, y] != null)
+                {
+                    Destroy(gridCells[x, y].gameObject);
+                    gridCells[x, y] = null;
+                }
+            }
         }
     }
 }
