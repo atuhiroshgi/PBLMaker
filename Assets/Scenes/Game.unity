@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 992cae52402361a43944422c1f8eaa5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockPlacer: {fileID: 499130053}
   blockButtons:
   - {fileID: 279284768}
   - {fileID: 1457099348}
@@ -498,6 +499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7bfcc5a0f225940a36ca61f5d184da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paletteController: {fileID: 74412515}
   blockType: 0
 --- !u!1 &326557270
 GameObject:
@@ -588,6 +590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7bfcc5a0f225940a36ca61f5d184da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paletteController: {fileID: 74412515}
   blockType: 0
 --- !u!1 &347167505
 GameObject:
@@ -858,6 +861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7bfcc5a0f225940a36ca61f5d184da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paletteController: {fileID: 74412515}
   blockType: 0
 --- !u!1 &499130052
 GameObject:
@@ -1160,6 +1164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7bfcc5a0f225940a36ca61f5d184da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paletteController: {fileID: 74412515}
   blockType: 0
 --- !u!1 &619394800
 GameObject:
@@ -1686,6 +1691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7bfcc5a0f225940a36ca61f5d184da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paletteController: {fileID: 74412515}
   blockType: 0
 --- !u!1 &1149975676
 GameObject:
@@ -1851,6 +1857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7bfcc5a0f225940a36ca61f5d184da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paletteController: {fileID: 74412515}
   blockType: 0
 --- !u!1 &1335059624
 GameObject:
@@ -2108,6 +2115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7bfcc5a0f225940a36ca61f5d184da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paletteController: {fileID: 74412515}
   blockType: 0
 --- !u!1 &1461222943
 GameObject:
@@ -2348,6 +2356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7bfcc5a0f225940a36ca61f5d184da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paletteController: {fileID: 74412515}
   blockType: 0
 --- !u!1 &1643699475
 GameObject:
@@ -2513,6 +2522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7bfcc5a0f225940a36ca61f5d184da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paletteController: {fileID: 74412515}
   blockType: 0
 --- !u!1 &1852568719
 GameObject:
@@ -2678,6 +2688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7bfcc5a0f225940a36ca61f5d184da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paletteController: {fileID: 74412515}
   blockType: 0
 --- !u!1 &1861520503
 GameObject:
@@ -2768,6 +2779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7bfcc5a0f225940a36ca61f5d184da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paletteController: {fileID: 74412515}
   blockType: 0
 --- !u!1 &1916494700
 GameObject:
@@ -2994,6 +3006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7bfcc5a0f225940a36ca61f5d184da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paletteController: {fileID: 74412515}
   blockType: 0
 --- !u!1 &2003211575
 GameObject:
@@ -3553,8 +3566,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7756057129233442581}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11, y: -3.16, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -11, y: -3.1599731, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

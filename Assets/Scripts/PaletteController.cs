@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class PaletteController : MonoBehaviour
 {
+    [SerializeField, Header("BlockPlacerを参照")]
+    private BlockPlacer blockPlacer;
     [SerializeField, Header("BlockButtonを参照")]
     private BlockButton[] blockButtons; 
     [SerializeField, Header("BlockStorageDataを参照")]
@@ -60,10 +62,18 @@ public class PaletteController : MonoBehaviour
                 paletteIcons[i].enabled = false;
             }
         }
+
+        // ブロックタイプをblockPlacerに通知
+        blockPlacer.SetBlockType(selectedBlockType);
     }
 
+    /// <summary>
+    /// 選択されているブロックのタイプのセッター
+    /// </summary>
+    /// <param name="blockType">ブロックタイプ</param>
     public void SetSelectedBlockType(int blockType)
     {
         this.selectedBlockType = blockType;
+        Init();
     }
 }

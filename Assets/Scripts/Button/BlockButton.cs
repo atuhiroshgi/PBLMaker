@@ -2,8 +2,16 @@ using UnityEngine;
 
 public class BlockButton : Button
 {
+    [SerializeField, Header("PaletteControllerを参照")]
+    private PaletteController paletteController;
     [SerializeField, Header("アイコンが押されたときにBlockPlacerに設定するBlockType")]
     private int blockType;
+
+    protected override void OnClick()
+    {
+        // クリックされたら選択されたことをPaletteControllerに通知する
+        paletteController.SetSelectedBlockType(this.blockType);
+    }
 
     /// <summary>
     /// blockTypeのセッター
@@ -13,4 +21,5 @@ public class BlockButton : Button
     {
         this.blockType = blockType;
     }
+
 }
