@@ -892,9 +892,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7adb7839c15e2a449b348cb8464b38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paletteController: {fileID: 74412515}
   gridCellLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 72
   blockType: 0
   uiObjects:
   - {fileID: 7756057129233442581}

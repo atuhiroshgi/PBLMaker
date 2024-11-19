@@ -1,12 +1,16 @@
 using Cysharp.Threading.Tasks;
 using Cysharp.Threading.Tasks.CompilerServices;
+using System.IO.IsolatedStorage;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : Character
 {
-    private static readonly float CLEAR_COOLTIME = 2f;              // クリアした後のクールタイム
-    private static readonly KeyCode DASH_KEY = KeyCode.LeftShift;   // ダッシュするときに使うキー
+    private static readonly KeyCode DASH_KEY = KeyCode.LeftShift;       // ダッシュするときに使うキー
+    private static readonly string ENEMY_TAG = "Enemy";                 // 敵オブジェクトのタグ
+    private static readonly string DEATH_OBJECT_TAG = "DeathObject";    // 触れたら死ぬオブジェクトのタグ
+    private static readonly float CLEAR_COOLTIME = 2f;                  // クリアした後のクールタイム
+    private static readonly float DEAD_LINE = -8f;                      // 死ぬライン
 
     [SerializeField, Header("GroundCheckを参照")]
     private GroundCheck groundCheck = null;
@@ -30,7 +34,7 @@ public class Player : Character
     private float playerSpeed;              // プレイヤーのスピードを格納するため
     private bool isGround = false;          // 地面に触れているかどうか
     private bool isClear = false;           // クリアしているかどうか
-    private bool isDead = false;            // 死んでいるかどうか
+    private bool isJump = false;            // ジャンプしているかどうか
 
     protected override void Awake()
     {
@@ -42,18 +46,22 @@ public class Player : Character
     {
         if (ExecuteManager.Instance.GetIsExecute())
         {
+            if (isClear || isDead) return;      //クリア済みor死んでいたら操作を無効化
             // 実行中だけ操作可能
             Jump();
+            CheckPlayerY();
         }
         else
         {
             DisableOperation();
         }
+
+        ForDebug();
     }
 
     private void FixedUpdate()
     {
-        if (!ExecuteManager.Instance.GetIsExecute()) return;
+        if (!ExecuteManager.Instance.GetIsExecute() || isClear || isDead) return;
         Physics();
         AdjustGravity();
         Move();
@@ -89,7 +97,17 @@ public class Player : Character
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            if (isGround)
+            {
+                // 地上でのジャンプ
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                isJump = true;
+            }
+        }
+
+        if (isGround)
+        {
+            isJump = false;
         }
     }
 
@@ -111,6 +129,14 @@ public class Player : Character
             rb.linearVelocity.y > 0 ? jumpGravityScale :
             rb.linearVelocity.y < 0 ? fallGravityScale :
             defaultGravityScale;
+    }
+
+    private void CheckPlayerY()
+    {
+        if(transform.position.y < DEAD_LINE)
+        {
+            isDead = true;
+        }
     }
 
     /// <summary>
@@ -141,6 +167,47 @@ public class Player : Character
         FixPositionToCamera();
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag(ENEMY_TAG))
+        {
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+
+            // プレイヤーの足元より敵が下にいたら倒す、それ以外ならプレイヤーが死ぬ
+            if(transform.position.y - 1 > collision.gameObject.transform.position.y)
+            {
+                // 敵を死亡状態にする
+                enemy.SetIsDead(true);
+            }
+            else
+            {
+                if (collision.gameObject.GetComponent<Enemy>().GetIsDead()) return;
+                isDead = true;
+            }
+        }
+
+        if (collision.gameObject.CompareTag(DEATH_OBJECT_TAG))
+        {
+            if (isDead) return;
+            isDead = true;
+        }
+    }
+
+    /// <summary>
+    /// ゴール到達時に呼ぶ処理
+    /// </summary>
+    public void GoalReached()
+    {
+        if (isClear || isDead) return;      // ゴールしていたり死んでいる場合は処理しない
+        isClear = true;
+
+        rb.linearVelocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+
+        Debug.Log("ゴールに到達しました");
+    }
+
+
     /// <summary>
     /// プレイヤーの速度を取得するためのゲッター
     /// </summary>
@@ -148,5 +215,19 @@ public class Player : Character
     public float GetPlayerSpeed()
     {
         return playerSpeed;
+    }
+
+    /// <summary>
+    /// 死んでいるかどうかのゲッター
+    /// </summary>
+    /// <returns></returns>
+    public bool GetIsDead()
+    {
+        return isDead;
+    }
+
+    private void ForDebug()
+    {
+
     }
 }

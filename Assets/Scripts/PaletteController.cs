@@ -83,7 +83,6 @@ public class PaletteController : MonoBehaviour
         }
         else
         {
-            Debug.Log("あああ");
             // 設置するオブジェクトをBlockPlacerに渡す
             blockPlacer.SetObjectToPlace(currentObject);
         }

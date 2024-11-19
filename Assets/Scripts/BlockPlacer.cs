@@ -78,9 +78,16 @@ public class BlockPlacer : MonoBehaviour
         {
             // ブロックタイプを設定
             cell.SetBlockType(blockType);
+            
+            // GridCellのレイヤーを"Wall"に変更
+            cell.gameObject.layer = blockType == -1 ? LayerMask.NameToLayer("Grid") : LayerMask.NameToLayer("Wall");
         }
     }
 
+    /// <summary>
+    /// オブジェクトを設置する用のメソッド
+    /// </summary>
+    /// <param name="hit">指定レイヤー上のコライダーの位置</param>
     private void PlaceObject(RaycastHit2D hit)
     {
         GridCell cell = hit.collider.GetComponent<GridCell>();
