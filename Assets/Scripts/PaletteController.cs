@@ -14,15 +14,23 @@ public class PaletteController : MonoBehaviour
 
     private Color selectedColor = Color.yellow;
     private Color defaultColor = Color.gray;
-    private int selectedIndex = 0;
+    private int selectedBlockType = 0;
     private int targetLineIndex = 0;
 
     private void Awake()
     {
+        Init();
+    }
+
+    /// <summary>
+    /// パレットのアイコンを初期化するメソッド
+    /// </summary>
+    private void Init()
+    {
         // LineDataの取得
         LineData[] lineDatas = blockStorageData.LineDatas;
 
-        if(lineDatas == null || lineDatas.Length <= targetLineIndex)
+        if (lineDatas == null || lineDatas.Length <= targetLineIndex)
         {
             Debug.LogWarning("指定されたインデックスのLineDataは存在せえへんで");
             return;
@@ -32,17 +40,17 @@ public class PaletteController : MonoBehaviour
         LineData targetLineData = lineDatas[targetLineIndex];
         BlockData[] blockDataArray = targetLineData.BlockData;
 
-        for(int i = 0; i < paletteIcons.Length; i++)
+        for (int i = 0; i < paletteIcons.Length; i++)
         {
             // ブロックデータの配列の範囲内なら表示して、画像を設定
-            if(i < blockDataArray.Length && blockDataArray[i] != null)
+            if (i < blockDataArray.Length && blockDataArray[i] != null)
             {
                 BlockData blockData = blockDataArray[i];
 
                 // アイコン画像を設定
                 paletteIcons[i].sprite = blockData.BlockSprite;
                 paletteIcons[i].enabled = true;
-                paletteIconBgs[i].color = i == selectedIndex ? selectedColor : defaultColor;
+                paletteIconBgs[i].color = i == selectedBlockType ? selectedColor : defaultColor;
                 blockButtons[i].SetBlockType(blockData.BlockType);
             }
             else
@@ -52,5 +60,10 @@ public class PaletteController : MonoBehaviour
                 paletteIcons[i].enabled = false;
             }
         }
+    }
+
+    public void SetSelectedBlockType(int blockType)
+    {
+        this.selectedBlockType = blockType;
     }
 }

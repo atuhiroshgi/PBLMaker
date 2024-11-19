@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ExecuteManager : Button
 {
     #region シングルトン
-    public static ExecuteManager instance;
+    private static ExecuteManager instance;
     
     public static ExecuteManager Instance
     {
@@ -19,8 +19,10 @@ public class ExecuteManager : Button
 
     #endregion
 
-    [SerializeField, Header("CameraController")]
+    [SerializeField, Header("CameraControllerの参照")]
     private CameraController cameraController = null;
+    [SerializeField, Header("UICanvasの参照")]
+    private Canvas uiCanvas;
     [SerializeField, Header("再生ボタン")]
     private Sprite playSprite = null;
     [SerializeField, Header("一時停止ボタン")]
@@ -33,7 +35,17 @@ public class ExecuteManager : Button
 
     private void Awake()
     {
-        instance = this;
+        // シングルトンインスタンスの設定
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if(instance != this)
+        {
+            // もし他のインスタンスが存在した場合、自身を破棄する
+            Destroy(gameObject);
+        }
         
         executeIconImage = GetComponent<Image>();
         executeIconImage.sprite = playSprite;
@@ -51,6 +63,8 @@ public class ExecuteManager : Button
         {
             // 実行を開始した時点でのカメラの座標を保存
             cameraController.RememberStartPosition();
+
+            uiCanvas.enabled = false;
         }
         else
         {

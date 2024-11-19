@@ -2016,6 +2016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraController: {fileID: 519420033}
+  uiCanvas: {fileID: 347167508}
   playSprite: {fileID: -8770034739519435172, guid: 0d7edb7fa8f1f81439e8cea75feab334, type: 3}
   pauseSprite: {fileID: -136352359, guid: 2bec9a0ff82acf1408f9a7781c06f551, type: 3}
 --- !u!1 &1457099344
