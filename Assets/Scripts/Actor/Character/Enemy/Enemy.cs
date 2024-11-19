@@ -71,8 +71,11 @@ public class Enemy : Character
                 initialPosition = transform.position;
             }
 
-            // Às‚³‚ê‚½‚çŠÑ’Ê‚ğ~‚ß‚é
-            col.isTrigger = false;
+            if (!isDead)
+            {
+                // Às‚³‚ê‚½‚çŠÑ’Ê‚ğ~‚ß‚é
+                col.isTrigger = false;
+            }
 
             // Às‚µ‚½‚çd—Í‚ğ“­‚©‚¹‚é
             rb.gravityScale = 3;
@@ -94,6 +97,7 @@ public class Enemy : Character
 
     protected override void Death()
     {
+        Debug.Log("“G“|‚µ‚½");
         spriteRenderer.enabled = false;
         col.isTrigger = true;
     }
@@ -106,7 +110,7 @@ public class Enemy : Character
         if (invincible) return;     // –³“G‚È‚ç€‚È‚È‚¢
         this.isDead = isDead;
 
-        Death();
+        if(isDead) Death();
     }
 
     public bool GetIsDead()

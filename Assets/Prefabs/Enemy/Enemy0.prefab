@@ -172,8 +172,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   wallCheckDistance: 0.5
-  moveSpeed: 2
-  airMoveFactor: 0.5
+  moveSpeed: 5
+  airMoveFactor: 1
 --- !u!1 &3316330053148588584
 GameObject:
   m_ObjectHideFlags: 0
