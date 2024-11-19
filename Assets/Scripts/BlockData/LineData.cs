@@ -8,5 +8,6 @@ public class LineData : ScriptableObject
     [SerializeField, Header("この行に含まれるブロックのBlockData")]
     private BlockData[] blockData = new BlockData[DATA_LENGTH];
 
+    // データにアクセスするためのプロパティ
     public BlockData[] BlockData => blockData;
 }
