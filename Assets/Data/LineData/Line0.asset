@@ -15,7 +15,7 @@ MonoBehaviour:
   blockData:
   - {fileID: 11400000, guid: 4caa5d68c2c6c6d45a7e7b878e9bb906, type: 2}
   - {fileID: 11400000, guid: 5fe7631b735d16346ae501454200b645, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 0587ebbb7c7b31d46ae76d2bff02c2df, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

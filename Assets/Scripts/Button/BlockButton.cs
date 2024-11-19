@@ -21,5 +21,4 @@ public class BlockButton : Button
     {
         this.blockType = blockType;
     }
-
 }

@@ -1,6 +1,5 @@
 using UnityEngine;
 
-public class Actor : MonoBehaviour
-{
+public class Actor : MonoBehaviour{
     
 }

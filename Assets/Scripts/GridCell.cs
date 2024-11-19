@@ -63,7 +63,7 @@ public class GridCell : MonoBehaviour
             Destroy(placedObject);
         }
 
-
+        // nullÇ∂Ç·Ç»ÇØÇÍÇŒê›íuÇ∑ÇÈ
         if(newObjectPrefab != null)
         {
             placedObject = Instantiate(newObjectPrefab, transform.position, Quaternion.identity, transform);

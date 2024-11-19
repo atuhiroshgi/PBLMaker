@@ -26,11 +26,11 @@ public class Player : Character
     private float fallGravityScale = 2f;
 
     private Camera mainCamera;
-    private float lastDirection = 1;    // 最後の移動方向を保持(1は右向き, -1は左向き)
-    private float playerSpeed;          // プレイヤーのスピードを格納するため
-    private bool isGround = false;      // 地面に触れているかどうか
-    private bool isClear = false;       // クリアしているかどうか
-    private bool isDead = false;        // 死んでいるかどうか
+    private float lastDirection = 1;        // 最後の移動方向を保持(1は右向き, -1は左向き)
+    private float playerSpeed;              // プレイヤーのスピードを格納するため
+    private bool isGround = false;          // 地面に触れているかどうか
+    private bool isClear = false;           // クリアしているかどうか
+    private bool isDead = false;            // 死んでいるかどうか
 
     protected override void Awake()
     {
@@ -42,9 +42,8 @@ public class Player : Character
     {
         if (ExecuteManager.Instance.GetIsExecute())
         {
-            //実行中だけ操作可能
+            // 実行中だけ操作可能
             Jump();
-            //実行中だけ操作可能
         }
         else
         {
