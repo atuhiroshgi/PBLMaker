@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Player : Character
 {
-    private static float CLEAR_COOLTIME = 2f;    // クリアした後のクールタイム
+    private static readonly float CLEAR_COOLTIME = 2f;              // クリアした後のクールタイム
+    private static readonly KeyCode DASH_KEY = KeyCode.LeftShift;   // ダッシュするときに使うキー
 
     [SerializeField, Header("GroundCheckを参照")]
     private GroundCheck groundCheck = null;
@@ -13,8 +14,8 @@ public class Player : Character
     private Vector3 cameraOffset = new Vector3(-11, -3, 0);
     [SerializeField, Header("プレイヤーの移動速度")]
     private float moveSpeed = 5f;
-    [SerializeField, Header("空中でのプレイヤーの移動速度")]
-    private float airMoveSpeed = 3f;
+    [SerializeField, Header("ダッシュ中のプレイヤーの移動速度")]
+    private float dashMoveSpeed = 10f;
     [SerializeField, Header("ジャンプの強さ")]
     private float jumpForce = 7f;
     [SerializeField, Header("通常時の重力スケール")]
@@ -43,6 +44,7 @@ public class Player : Character
         {
             //実行中だけ操作可能
             Jump();
+            //実行中だけ操作可能
         }
         else
         {
@@ -62,8 +64,9 @@ public class Player : Character
     {
         float moveInput = Input.GetAxis("Horizontal");
 
-        // 地上と空中で横移動できる速度を変える
-        playerSpeed = isGround ? moveSpeed : airMoveSpeed;
+        // ダッシュ中かどうかで移動速度を変える
+        playerSpeed = Input.GetKey(DASH_KEY) ? dashMoveSpeed : moveSpeed;
+        
         rb.linearVelocity = new Vector2(moveInput * playerSpeed, rb.linearVelocity.y);
 
         // プレイヤーが移動している場合、方向を更新

@@ -1416,7 +1416,7 @@ MonoBehaviour:
   airMoveSpeed: 3
   jumpForce: 7
   defaultGravityScale: 1
-  jumpGravityScale: 0.5
+  jumpGravityScale: 1
   fallGravityScale: 2
 --- !u!50 &8340509793872120007
 Rigidbody2D:
