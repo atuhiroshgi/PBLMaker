@@ -4,12 +4,16 @@ using Cysharp.Threading.Tasks;
 using Cysharp.Threading.Tasks.CompilerServices;
 public class BlockPlacer : MonoBehaviour
 {
+    [SerializeField, Header("PaletteControllerの参照")]
+    private PaletteController paletteController;
     [SerializeField, Header("どのレイヤーのGridCellをターゲットにするか")]
     private LayerMask gridCellLayer;
     [SerializeField, Header("配置するブロックタイプ")]
     private int blockType = 0;
     [SerializeField, Header("重なっている間ブロックを置いてほしくないUI")]
     private GameObject[] uiObjects;
+
+    private GameObject objectToPlace;
 
     private async void Update()
     {
@@ -29,7 +33,7 @@ public class BlockPlacer : MonoBehaviour
         while (Input.GetMouseButton(0))
         {
             // マウス直下のGridCellを探して、SetBlockTypeメソッドを呼び出す
-            PlaceBlockUnderMouse();
+            PlaceObjectUnderMouse();
 
             // 入力が続く限り、一定間隔ごとに次のフレームまで待機
             await UniTask.DelayFrame(1);
@@ -39,7 +43,7 @@ public class BlockPlacer : MonoBehaviour
     /// <summary>
     /// マウス直下のGridCellに対してSetBlockTypeメソッドを呼び出す
     /// </summary>
-    private void PlaceBlockUnderMouse()
+    private void PlaceObjectUnderMouse()
     {
         // マウスの位置をワールド座標に変換
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -50,19 +54,47 @@ public class BlockPlacer : MonoBehaviour
         // GridCellコンポーネントを取得
         if (hit.collider != null)
         {
-            //Buttonクラスに重なっているときはブロックを置かない
-            Player player = hit.collider.gameObject.GetComponent<Player>();
-            Button button = hit.collider.GetComponent<Button>();
-            if(button != null)
-            {
-                return;
-            }
+            if(paletteController.GetSelectedIsBlock()) PlaceBlock(hit);
+            if(!paletteController.GetSelectedIsBlock()) PlaceObject(hit);
+        }
+    }
 
-            GridCell cell = hit.collider.GetComponent<GridCell>();
-            if (cell != null)
-            {
-                cell.SetBlockType(blockType);
-            }
+    /// <summary>
+    /// ブロックを設置する用のメソッド
+    /// </summary>
+    /// <param name="hit">指定レイヤー上のコライダーの位置</param>
+    private void PlaceBlock(RaycastHit2D hit)
+    {
+        // Buttonクラスに重なっているときはブロックを置かない
+        Player player = hit.collider.gameObject.GetComponent<Player>();
+        Button button = hit.collider.GetComponent<Button>();
+        if (button != null)
+        {
+            return;
+        }
+
+        GridCell cell = hit.collider.GetComponent<GridCell>();
+        if (cell != null)
+        {
+            // ブロックタイプを設定
+            cell.SetBlockType(blockType);
+            
+            // GridCellのレイヤーを"Wall"に変更
+            cell.gameObject.layer = blockType == -1 ? LayerMask.NameToLayer("Grid") : LayerMask.NameToLayer("Wall");
+        }
+    }
+
+    /// <summary>
+    /// オブジェクトを設置する用のメソッド
+    /// </summary>
+    /// <param name="hit">指定レイヤー上のコライダーの位置</param>
+    private void PlaceObject(RaycastHit2D hit)
+    {
+        GridCell cell = hit.collider.GetComponent<GridCell>();
+        if(cell != null)
+        {
+            cell.SetPlacedObject(null);
+            cell.SetPlacedObject(objectToPlace);
         }
     }
 
@@ -97,9 +129,24 @@ public class BlockPlacer : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// ブロックタイプのセッター
+    /// </summary>
+    /// <param name="blockType">ブロックタイプ</param>
     public void SetBlockType(int blockType)
     {
         this.blockType = blockType;
     }
+
+    /// <summary>
+    /// 設置するオブジェクトのセッター
+    /// </summary>
+    /// <param name="objectToPlace">設置するオブジェクト</param>
+    public void SetObjectToPlace(GameObject objectToPlace)
+    {
+        this.objectToPlace = objectToPlace;
+    }
+
+
 }
 

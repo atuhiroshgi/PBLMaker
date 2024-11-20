@@ -14,10 +14,12 @@ public class PaletteController : MonoBehaviour
     [SerializeField, Header("アイコンそれぞれの背景")]
     private Image[] paletteIconBgs;
 
-    private Color selectedColor = Color.yellow;
-    private Color defaultColor = Color.gray;
-    private int selectedBlockType = 0;
-    private int targetLineIndex = 0;
+    private GameObject currentObject;           // 現在選択されているオブジェクト
+    private Color selectedColor = Color.red;    // 選ばれている時の色
+    private Color defaultColor = Color.gray;    // 選ばれていない時の色
+    private int selectedBlockType = 0;          // 選ばれているブロックタイプ
+    private int targetLineIndex = 0;            // 何行目を選択しているかのインデックス
+    private bool selectedIsBlock = true;        // 選ばれているのがブロックかどうか
 
     private void Awake()
     {
@@ -54,6 +56,16 @@ public class PaletteController : MonoBehaviour
                 paletteIcons[i].enabled = true;
                 paletteIconBgs[i].color = i == selectedBlockType ? selectedColor : defaultColor;
                 blockButtons[i].SetBlockType(blockData.BlockType);
+
+                // 選ばれているオブジェクトがブロックかどうかを判断して変数に格納
+                if(i == selectedBlockType)
+                {
+                    selectedIsBlock = blockData.IsBlock;
+                    if (!selectedIsBlock)
+                    {
+                        currentObject = blockData.Prefab;
+                    }
+                }
             }
             else
             {
@@ -62,9 +74,18 @@ public class PaletteController : MonoBehaviour
                 paletteIcons[i].enabled = false;
             }
         }
-
-        // ブロックタイプをblockPlacerに通知
-        blockPlacer.SetBlockType(selectedBlockType);
+        
+        // 選ばれているのがブロックかどうかで処理を変更
+        if (selectedIsBlock)
+        {
+            // ブロックタイプをblockPlacerに通知
+            blockPlacer.SetBlockType(selectedBlockType);
+        }
+        else
+        {
+            // 設置するオブジェクトをBlockPlacerに渡す
+            blockPlacer.SetObjectToPlace(currentObject);
+        }
     }
 
     /// <summary>
@@ -75,5 +96,14 @@ public class PaletteController : MonoBehaviour
     {
         this.selectedBlockType = blockType;
         Init();
+    }
+
+    /// <summary>
+    /// 選択されているオブジェクトがブロックかどうかのゲッター
+    /// </summary>
+    /// <returns>選択されているオブジェクトがブロックかどうか</returns>
+    public bool GetSelectedIsBlock()
+    {
+        return selectedIsBlock;
     }
 }
