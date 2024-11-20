@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using System;
 using UnityEngine;
 
 public class GridCell : MonoBehaviour
@@ -79,6 +78,10 @@ public class GridCell : MonoBehaviour
         if(newObjectPrefab != null)
         {
             placedObject = Instantiate(newObjectPrefab, transform.position, Quaternion.identity, transform);
+        }
+        else
+        {
+
         }
     }
 

@@ -28,7 +28,7 @@ public class EraserButton : Button
         base.OnClick();
         isEraserMode = !isEraserMode;
 
-        if (isEraserMode) blockPlacer.SetBlockType(-1);
+        blockPlacer.SetIsEraserMode(isEraserMode);
         eraserButtonImage.sprite = isEraserMode ? eraserModeSprite : defaultSprite;
 
     }

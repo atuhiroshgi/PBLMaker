@@ -9,13 +9,9 @@ public class GroundCheck : MonoBehaviour
     private bool isGroundStay = false;  //地面に入り続けているか
     private bool isGroundExit = false;  //地面から出たときのフラグ
 
-    /// <summary>
-    /// 接地しているかどうかのゲッター
-    /// </summary>
-    /// <returns>接地しているかどうか</returns>
-    public bool GetIsGround()
+    private void Update()
     {
-        if(isGroundEnter || isGroundStay)
+        if (isGroundEnter || isGroundStay)
         {
             isGround = true;
         }
@@ -27,27 +23,34 @@ public class GroundCheck : MonoBehaviour
         isGroundEnter = false;
         isGroundStay = false;
         isGroundExit = false;
+    }
 
+    /// <summary>
+    /// 接地しているかどうかのゲッター
+    /// </summary>
+    /// <returns>接地しているかどうか</returns>
+    public bool GetIsGround()
+    {
         return isGround;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(GROUND_TAG == collision.tag)
+        if(collision.CompareTag(GROUND_TAG))
         {
             isGroundEnter = true;
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(GROUND_TAG == collision.tag)
+        if(collision.CompareTag(GROUND_TAG))
         {
             isGroundStay = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(GROUND_TAG == collision.tag)
+        if(collision.CompareTag(GROUND_TAG))
         {
             isGroundExit = true;
         }

@@ -14,6 +14,7 @@ public class BlockPlacer : MonoBehaviour
     private GameObject[] uiObjects;
 
     private GameObject objectToPlace;
+    private bool isEraserMode = false;
 
     private async void Update()
     {
@@ -54,8 +55,15 @@ public class BlockPlacer : MonoBehaviour
         // GridCellコンポーネントを取得
         if (hit.collider != null)
         {
-            if(paletteController.GetSelectedIsBlock()) PlaceBlock(hit);
-            if(!paletteController.GetSelectedIsBlock()) PlaceObject(hit);
+            if (isEraserMode)
+            {
+                DeleteObject(hit);
+            }
+            else
+            {
+                if(paletteController.GetSelectedIsBlock()) PlaceBlock(hit);
+                if(!paletteController.GetSelectedIsBlock()) PlaceObject(hit);
+            }
         }
     }
 
@@ -78,9 +86,14 @@ public class BlockPlacer : MonoBehaviour
         {
             // ブロックタイプを設定
             cell.SetBlockType(blockType);
-            
+
             // GridCellのレイヤーを"Wall"に変更
             cell.gameObject.layer = blockType == -1 ? LayerMask.NameToLayer("Grid") : LayerMask.NameToLayer("Wall");
+
+            if(blockType != -1)
+            {
+                cell.gameObject.tag = "Ground";
+            }
         }
     }
 
@@ -95,6 +108,33 @@ public class BlockPlacer : MonoBehaviour
         {
             cell.SetPlacedObject(null);
             cell.SetPlacedObject(objectToPlace);
+        }
+    }
+
+    /// <summary>
+    /// オブジェクトを消す
+    /// </summary>
+    /// <param name="hit">指定レイヤー上のコライダーの位置</param>
+    private void DeleteObject(RaycastHit2D hit)
+    {
+        // Buttonクラスに重なっているときはブロックを置かない
+        Player player = hit.collider.gameObject.GetComponent<Player>();
+        Button button = hit.collider.GetComponent<Button>();
+        GridCell cell = hit.collider.GetComponent<GridCell>();
+        if (button != null)
+        {
+            return;
+        }
+
+        if (cell != null)
+        {
+            // ブロックタイプを設定
+            cell.SetBlockType(-1);
+            cell.gameObject.layer = LayerMask.NameToLayer("Grid");
+            cell.gameObject.tag = "Grid";
+
+            // nullを置く(消す)
+            cell.SetPlacedObject(null);
         }
     }
 
@@ -147,6 +187,13 @@ public class BlockPlacer : MonoBehaviour
         this.objectToPlace = objectToPlace;
     }
 
-
+    /// <summary>
+    /// 消しゴムモードかどうかのフラグのセッター
+    /// </summary>
+    /// <param name="isEraserMode">消しゴムモードかどうか</param>
+    public void SetIsEraserMode(bool isEraserMode)
+    {
+        this.isEraserMode = isEraserMode;
+    }
 }
 

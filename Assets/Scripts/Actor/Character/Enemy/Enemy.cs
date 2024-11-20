@@ -7,6 +7,7 @@ public class Enemy : Character
     [SerializeField, Header("ñ≥ìGÇ©Ç«Ç§Ç©")]
     protected bool invincible = false;
 
+
     protected Player player;
     protected GroundCheck groundCheck;
 
@@ -84,6 +85,7 @@ public class Enemy : Character
 
         if(groundCheck != null && groundCheck.GetIsGround())
         {
+
             Ground();
         }
     }
@@ -93,6 +95,7 @@ public class Enemy : Character
     /// </summary>
     protected virtual void Ground()
     {
+        // TODO: Ç»Ç∫Ç©ê⁄ínîªíËÇ™Ç»Ç¢
     }
 
     protected override void Death()
