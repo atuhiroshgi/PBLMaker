@@ -151,6 +151,7 @@ MonoBehaviour:
   yGrid: 0
   blockType: -1
   emptySprite: {fileID: 7066886920419514456, guid: e738879b26a27454f88d572f17862a77, type: 3}
+  executeEmptySprite: {fileID: 0}
   cellSprites:
   - {fileID: -963763462, guid: a2c47cee9abee874989d828b4b02d87f, type: 3}
   - {fileID: -5225540622116197949, guid: 1ecaff304739ec04c92474c61c56f8b5, type: 3}

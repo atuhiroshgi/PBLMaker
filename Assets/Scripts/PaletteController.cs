@@ -6,7 +6,7 @@ public class PaletteController : MonoBehaviour
     [SerializeField, Header("BlockPlacerを参照")]
     private BlockPlacer blockPlacer;
     [SerializeField, Header("BlockButtonを参照")]
-    private BlockButton[] blockButtons; 
+    private BlockButton[] blockButtons;
     [SerializeField, Header("BlockStorageDataを参照")]
     private BlockStorageData blockStorageData;
     [SerializeField, Header("パレットのアイコン画像")]
