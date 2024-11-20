@@ -34,6 +34,8 @@ public class Enemy : Character
 
     protected virtual void Update()
     {
+        Debug.Log(groundCheck.GetIsGround());
+
         if (player.GetIsDead())
         {
             // プレイヤーが死んでいたら全ての動作を止める
