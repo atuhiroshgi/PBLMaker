@@ -687,6 +687,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 420674080}
+  - {fileID: 1400498868}
   - {fileID: 2134367487}
   - {fileID: 74412512}
   m_Father: {fileID: 0}
@@ -725,8 +726,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1400498868}
+  m_Children: []
   m_Father: {fileID: 347167509}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1069,7 +1069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 8340509793872120006}
   playerTransform: {fileID: 7040750652549257433}
-  xOffsetThreshold: 2
+  xOffsetThreshold: 1
   yOffsetThreshold: 1.5
   cameraSpeed: 30
   minX: 0
@@ -1966,11 +1966,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 420674080}
+  m_Father: {fileID: 347167509}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3, y: 350}
+  m_AnchoredPosition: {x: -882, y: 196.08997}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1400498869
@@ -2024,9 +2024,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraController: {fileID: 519420033}
-  uiCanvas: {fileID: 347167508}
   playSprite: {fileID: -8770034739519435172, guid: 0d7edb7fa8f1f81439e8cea75feab334, type: 3}
   pauseSprite: {fileID: -136352359, guid: 2bec9a0ff82acf1408f9a7781c06f551, type: 3}
+  switchingUIs:
+  - {fileID: 420674079}
+  - {fileID: 2134367486}
+  - {fileID: 74412511}
 --- !u!1 &1457099344
 GameObject:
   m_ObjectHideFlags: 0

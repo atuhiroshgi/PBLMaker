@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+using System;
 using UnityEngine;
 
 public class GridCell : MonoBehaviour
@@ -8,9 +10,11 @@ public class GridCell : MonoBehaviour
     private int yGrid;
     [SerializeField, Header("このセルにどのブロックが置かれているか")]
     private int blockType = -1;
-    
+
     [SerializeField, Header("空の時のセルの見た目")]
     private Sprite emptySprite;
+    [SerializeField, Header("空で実行された時の見た目")]
+    private Sprite executeEmptySprite;
     [SerializeField, Header("ブロックの見た目を変更するための画像の配列")]
     private Sprite[] cellSprites;
 
@@ -18,10 +22,18 @@ public class GridCell : MonoBehaviour
     private GameObject placedObject;        // このセルの上に存在するオブジェクトを格納するためのメンバ
     private SpriteRenderer spriteRenderer;  // このセルの見た目を変更するため
 
-    private void Awake()
+    private async void Awake()
     {
         col = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        while (true)
+        {
+            await UniTask.WaitUntil(() => !ExecuteManager.Instance.GetIsExecute());
+            if (blockType == -1) spriteRenderer.sprite = emptySprite;
+            await UniTask.WaitUntil(() => ExecuteManager.Instance.GetIsExecute());
+            if (blockType == -1) spriteRenderer.sprite = null;
+        }
     }
 
     /// <summary>
@@ -40,7 +52,7 @@ public class GridCell : MonoBehaviour
     private void UpdateAppearance()
     {
         if (spriteRenderer == null) return;
-        
+
         // ブロックに応じたSpriteを設定
         spriteRenderer.sprite = blockType == -1 ? emptySprite : cellSprites[blockType];
         // 色と透明度を設定

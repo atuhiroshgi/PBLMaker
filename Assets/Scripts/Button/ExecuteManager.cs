@@ -8,7 +8,7 @@ public class ExecuteManager : Button
 {
     #region シングルトン
     private static ExecuteManager instance;
-    
+
     public static ExecuteManager Instance
     {
         get
@@ -21,12 +21,12 @@ public class ExecuteManager : Button
 
     [SerializeField, Header("CameraControllerの参照")]
     private CameraController cameraController = null;
-    [SerializeField, Header("UICanvasの参照")]
-    private Canvas uiCanvas;
     [SerializeField, Header("再生ボタン")]
     private Sprite playSprite = null;
     [SerializeField, Header("一時停止ボタン")]
     private Sprite pauseSprite = null;
+    [SerializeField, Header("実行したら非表示にしたいUI要素")]
+    private GameObject[] switchingUIs;
 
     private Image executeIconImage;
     private Color playColor = new Color(181f / 255f, 218f / 255f, 164f / 255f);     // 黄緑色
@@ -46,7 +46,7 @@ public class ExecuteManager : Button
             // もし他のインスタンスが存在した場合、自身を破棄する
             Destroy(gameObject);
         }
-        
+
         executeIconImage = GetComponent<Image>();
         executeIconImage.sprite = playSprite;
         executeIconImage.color = playColor;
@@ -64,12 +64,22 @@ public class ExecuteManager : Button
             // 実行を開始した時点でのカメラの座標を保存
             cameraController.RememberStartPosition();
 
-            uiCanvas.enabled = false;
+            // switchingUIsの要素を全て非表示にする
+            foreach(GameObject switchingUI in switchingUIs)
+            {
+                switchingUI.SetActive(false);
+            }
         }
         else
         {
-            //実行した時点でのカメラの座標に戻す
+            // 実行した時点でのカメラの座標に戻す
             cameraController.MoveToStartPosition();
+
+            // switchingUIsの要素を全て表示する
+            foreach (GameObject switchingUI in switchingUIs)
+            {
+                switchingUI.SetActive(true);
+            }
         }
     }
 
