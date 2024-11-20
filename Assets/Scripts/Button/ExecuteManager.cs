@@ -64,22 +64,14 @@ public class ExecuteManager : Button
             // 実行を開始した時点でのカメラの座標を保存
             cameraController.RememberStartPosition();
 
-            // switchingUIsの要素を全て非表示にする
-            foreach(GameObject switchingUI in switchingUIs)
-            {
-                switchingUI.SetActive(false);
-            }
+            HideAllUI();
         }
         else
         {
             // 実行した時点でのカメラの座標に戻す
             cameraController.MoveToStartPosition();
-
-            // switchingUIsの要素を全て表示する
-            foreach (GameObject switchingUI in switchingUIs)
-            {
-                switchingUI.SetActive(true);
-            }
+            
+            DisplayAllUI();
         }
     }
 
@@ -89,12 +81,54 @@ public class ExecuteManager : Button
     }
 
     /// <summary>
+    /// 指定されたUIを全て表示する
+    /// </summary>
+    public void DisplayAllUI()
+    {
+        // switchingUIsの要素を全て表示する
+        foreach (GameObject switchingUI in switchingUIs)
+        {
+            switchingUI.SetActive(true);
+        }
+    }
+    
+    /// <summary>
+    /// 指定されたUIを全て非表示にする
+    /// </summary>
+    public void HideAllUI()
+    {
+        // switchingUIsの要素を全て非表示する
+        foreach (GameObject switchingUI in switchingUIs)
+        {
+            switchingUI.SetActive(false);
+        }
+    }
+
+    /// <summary>
     /// アイコンをの表示を変更する
     /// </summary>
     private void ChangeIcon()
     {
         executeIconImage.sprite = isExecute ? pauseSprite : playSprite;
         executeIconImage.color = isExecute ? pauseColor : playColor;
+    }
+
+    /// <summary>
+    /// 実行しているかどうかのセッター
+    /// </summary>
+    /// <param name="isExecute">実行しているかどうか</param>
+    public void SetIsExecute(bool isExecute)
+    {
+        this.isExecute = isExecute;
+
+        if (isExecute)
+        {
+            HideAllUI();
+        }
+        else
+        {
+            DisplayAllUI();
+        }
     }
 
     /// <summary>

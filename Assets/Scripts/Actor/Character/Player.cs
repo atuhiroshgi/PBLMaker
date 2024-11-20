@@ -9,13 +9,20 @@ public class Player : Character
     private static readonly KeyCode DASH_KEY = KeyCode.LeftShift;       // ダッシュするときに使うキー
     private static readonly string ENEMY_TAG = "Enemy";                 // 敵オブジェクトのタグ
     private static readonly string DEATH_OBJECT_TAG = "DeathObject";    // 触れたら死ぬオブジェクトのタグ
+    private static readonly string CLEAR_MESSAGE = "CLEAR!!";           // ミスしたときに表示するメッセージ
+    private static readonly string FAILED_MESSAGE = "FAILED!!";         // ミスしたときに表示するメッセージ
     private static readonly float CLEAR_COOLTIME = 2f;                  // クリアした後のクールタイム
     private static readonly float DEAD_LINE = -8f;                      // 死ぬライン
 
+
+    [SerializeField, Header("CameraControllerを参照")]
+    private CameraController cameraController;
     [SerializeField, Header("GroundCheckを参照")]
     private GroundCheck groundCheck = null;
     [SerializeField, Header("一時停止中にカメラに対してどの位置に配置するか")]
     private Vector3 cameraOffset = new Vector3(-11, -3, 0);
+    [SerializeField, Header("メッセージUI")]
+    private TMPro.TMP_Text messageText;
     [SerializeField, Header("プレイヤーの移動速度")]
     private float moveSpeed = 5f;
     [SerializeField, Header("ダッシュ中のプレイヤーの移動速度")]
@@ -40,6 +47,7 @@ public class Player : Character
     {
         base.Awake();
         mainCamera = Camera.main;
+        messageText.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -158,13 +166,42 @@ public class Player : Character
     /// </summary>
     private void DisableOperation()
     {
-        //動きを止める
+        // 動きを止める
         rb.linearVelocity = Vector2.zero;
-        //重力を無効化
+        // 重力を無効化
         rb.gravityScale = 0;
 
-        //カメラに対して特定の位置にPlayerを固定
+        // カメラに対して特定の位置にPlayerを固定
         FixPositionToCamera();
+
+        // メッセージを即座に非表示する
+        messageText.gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// メッセージを表示するメソッド
+    /// </summary>
+    /// <param name="message">メッセージ</param>
+    private async void ShowMessage(string message)
+    {
+        messageText.text = message;
+        messageText.gameObject.SetActive(true);
+        await HideMessageAfterDelay(CLEAR_COOLTIME);
+    }
+
+    /// <summary>
+    /// 一定時間後にメッセージを非表示にするコルーチン
+    /// </summary>
+    /// <param name="delay">クリアしてから実行停止までの時間</param>
+    /// <returns></returns>
+    private async UniTask HideMessageAfterDelay(float delay)
+    {
+        await UniTask.Delay((int)(delay * 1000));
+        messageText.gameObject.SetActive(false);
+        cameraController.MoveToStartPosition();
+        ExecuteManager.Instance.SetIsExecute(false);
+        isClear = false;
+        isDead = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -183,6 +220,7 @@ public class Player : Character
             {
                 if (collision.gameObject.GetComponent<Enemy>().GetIsDead()) return;
                 isDead = true;
+                ShowMessage(FAILED_MESSAGE);
             }
         }
 
@@ -190,6 +228,7 @@ public class Player : Character
         {
             if (isDead) return;
             isDead = true;
+            ShowMessage(FAILED_MESSAGE);
         }
     }
 
@@ -204,7 +243,7 @@ public class Player : Character
         rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0f;
 
-        Debug.Log("ゴールに到達しました");
+        ShowMessage(CLEAR_MESSAGE);
     }
 
 

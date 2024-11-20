@@ -173,7 +173,7 @@ MonoBehaviour:
     m_Bits: 64
   wallCheckDistance: 0.5
   moveSpeed: 3
-  airMoveFactor: 3
+  airMoveFactor: 1
 --- !u!1 &3316330053148588584
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,8 +184,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1899834785804709496}
   - component: {fileID: 184990111194534662}
-  - component: {fileID: 256525765448027121}
   - component: {fileID: 1958760580352230581}
+  - component: {fileID: 256525765448027121}
   m_Layer: 0
   m_Name: GroundChecker
   m_TagString: Untagged
@@ -263,18 +263,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &256525765448027121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3316330053148588584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bf547e801c1d9e48a033ff19503aa81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1958760580352230581
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -321,3 +309,15 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &256525765448027121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3316330053148588584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bf547e801c1d9e48a033ff19503aa81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -14,6 +14,7 @@ public class Enemy : Character
     protected Vector3 initialPosition;          // 初期位置を把握するための
     protected bool isSaved = false;             // 初期位置を保存しているかどうかのフラグ
     protected bool isResetPosition = false;     // ポジションをリセットしたかどうか
+    private bool hasColliderAssigned = false;   // 実行時に当たり判定を加えたかどうかのフラグ
 
     protected override void Awake()
     {
@@ -34,8 +35,6 @@ public class Enemy : Character
 
     protected virtual void Update()
     {
-        Debug.Log(groundCheck.GetIsGround());
-
         if (player.GetIsDead())
         {
             // プレイヤーが死んでいたら全ての動作を止める
@@ -53,6 +52,7 @@ public class Enemy : Character
             // 実行中でなければ貫通可能にする
             col.enabled = true;
             col.isTrigger = true;
+            hasColliderAssigned = false;
 
             isSaved = false;
             isDead = false;
@@ -74,10 +74,11 @@ public class Enemy : Character
                 initialPosition = transform.position;
             }
 
-            if (!isDead)
+            if (!hasColliderAssigned)
             {
                 // 実行されたら貫通を止める
                 col.isTrigger = false;
+                hasColliderAssigned = true;
             }
 
             // 実行したら重力を働かせる
@@ -97,7 +98,6 @@ public class Enemy : Character
     /// </summary>
     protected virtual void Ground()
     {
-        // TODO: なぜか接地判定がない
     }
 
     protected override void Death()
