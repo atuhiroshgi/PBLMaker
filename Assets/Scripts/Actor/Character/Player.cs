@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using Cysharp.Threading.Tasks.CompilerServices;
+using System.ComponentModel;
 using System.IO.IsolatedStorage;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -42,6 +43,8 @@ public class Player : Character
     private bool isGround = false;          // 地面に触れているかどうか
     private bool isClear = false;           // クリアしているかどうか
     private bool isJump = false;            // ジャンプしているかどうか
+    private bool canMove = false;           // プレイヤーが動けるかどうか
+    private bool canJump = false;           // プレイヤーがジャンプできるかどうか
 
     protected override void Awake()
     {
@@ -77,11 +80,12 @@ public class Player : Character
 
     private void Move()
     {
+        if (!canMove) return;   // canMoveがfalseなら動かせない
         float moveInput = Input.GetAxis("Horizontal");
 
         // ダッシュ中かどうかで移動速度を変える
         playerSpeed = Input.GetKey(DASH_KEY) ? dashMoveSpeed : moveSpeed;
-        
+
         rb.linearVelocity = new Vector2(moveInput * playerSpeed, rb.linearVelocity.y);
 
         // プレイヤーが移動している場合、方向を更新
@@ -101,7 +105,7 @@ public class Player : Character
     /// </summary>
     private void Jump()
     {
-        if (!ExecuteManager.Instance.GetIsExecute()) return;
+        if (!ExecuteManager.Instance.GetIsExecute() || !canJump) return;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -246,6 +250,30 @@ public class Player : Character
         ShowMessage(CLEAR_MESSAGE);
     }
 
+    /// <summary>
+    /// スキルのオンオフのセッター
+    /// </summary>
+    /// <param name="index"></param>
+    /// <param name="isChecked"></param>
+    public void SetSkill(int index, bool isChecked)
+    {
+        switch (index)
+        {
+            case 0:
+                canMove = isChecked;
+                Debug.Log($"canMoveが{isChecked}");
+                break;
+
+            case 1:
+                canJump = isChecked;
+                Debug.Log($"canJumpが{isChecked}");
+                break;
+
+            default:
+                Debug.LogError("予測されないインデックスが指定されています");
+                break;
+        }
+    }
 
     /// <summary>
     /// プレイヤーの速度を取得するためのゲッター
@@ -265,8 +293,23 @@ public class Player : Character
         return isDead;
     }
 
+    public bool[] GetPlayerSkills()
+    {
+        bool[] currentSkill = { canMove, canJump };
+        return currentSkill;
+    }
+
     private void ForDebug()
     {
-
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            canMove = true;
+            canJump = true;
+        }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            canMove = false;
+            canJump = false;
+        }
     }
 }
