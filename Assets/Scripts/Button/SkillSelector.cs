@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class SkillSelector : MonoBehaviour
 {
-    private static float IRIS_IN = 3f;      // アイリスイン後のサイズ
-    private static float IRIS_OUT = 17f;    // アイリスアウト後のサイズ
+    private static float IRIS_IN = 10f;      // アイリスイン後のサイズ
+    private static float IRIS_OUT = 50f;    // アイリスアウト後のサイズ
     private static float SCALE_SPEED = 8f;  // スケールの変更速度
 
     [SerializeField, Header("スキルパネルの親オブジェクト")]
