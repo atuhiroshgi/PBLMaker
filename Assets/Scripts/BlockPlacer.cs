@@ -2,6 +2,9 @@ using UnityEngine;
 using Cysharp.Threading;
 using Cysharp.Threading.Tasks;
 using Cysharp.Threading.Tasks.CompilerServices;
+using NUnit.Framework;
+using System.Collections.Generic;
+
 public class BlockPlacer : MonoBehaviour
 {
     [SerializeField, Header("PaletteControllerの参照")]
@@ -12,13 +15,15 @@ public class BlockPlacer : MonoBehaviour
     private int blockType = 0;
     [SerializeField, Header("重なっている間ブロックを置いてほしくないUI")]
     private GameObject[] uiObjects;
+    [SerializeField, Header("重なっている間ブロックを置いてほしくないゲームオブジェクト")]
+    private List<GameObject> blockerGameObjects;
 
     private GameObject objectToPlace;
     private bool isEraserMode = false;
 
     private async void Update()
     {
-        if (IsPointerOverUIObject()) return;
+        if (IsPointerOverUIObject() || IsPointerOverBlockerObject()) return;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -166,6 +171,29 @@ public class BlockPlacer : MonoBehaviour
             }
         }
         //重なっているオブジェクトが見つからなかった
+        return false;
+    }
+
+    /// <summary>
+    /// マウスポインタがBlockerオブジェクトに重なっているかを確認するメソッド
+    /// </summary>
+    /// <returns>重なっているか</returns>
+    private bool IsPointerOverBlockerObject()
+    {
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Collider2D hit = Physics2D.OverlapPoint(mousePosition);
+
+        if(hit != null)
+        {
+            foreach(var blocker in blockerGameObjects)
+            {
+                if(hit.gameObject == blocker)
+                {
+                    return true;
+                }
+            }
+        }
+
         return false;
     }
 

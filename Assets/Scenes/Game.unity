@@ -3075,12 +3075,15 @@ MonoBehaviour:
     m_Bits: 72
   blockType: 0
   uiObjects:
-  - {fileID: 7756057129233442581}
   - {fileID: 1400498867}
   - {fileID: 2095179640}
   - {fileID: 2003211575}
   - {fileID: 74412511}
   - {fileID: 580921577}
+  - {fileID: 515815339}
+  - {fileID: 52882730}
+  blockerGameObjects:
+  - {fileID: 7756057129233442581}
 --- !u!4 &499130054
 Transform:
   m_ObjectHideFlags: 0
