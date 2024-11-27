@@ -23,7 +23,7 @@ public class BlockPlacer : MonoBehaviour
 
     private async void Update()
     {
-        if (IsPointerOverUIObject() || IsPointerOverBlockerObject()) return;
+        if (IsPointerOverUIObject() || IsPointerOverBlockerObject() || ExecuteManager.Instance.GetIsExecute()) return;
 
         if (Input.GetMouseButtonDown(0))
         {

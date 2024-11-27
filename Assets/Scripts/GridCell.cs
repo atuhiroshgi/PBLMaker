@@ -1,7 +1,7 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-public class GridCell : MonoBehaviour
+public class GridCell : Actor
 {
     [SerializeField, Header("‚±‚ÌƒZƒ‹‚ª¶‚©‚ç‰½ƒ}ƒX–Ú‚©")]
     private int xGrid;
