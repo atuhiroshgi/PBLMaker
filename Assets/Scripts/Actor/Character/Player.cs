@@ -13,7 +13,7 @@ public class Player : Character
     private static readonly string CLEAR_MESSAGE = "CLEAR!!";           // ミスしたときに表示するメッセージ
     private static readonly string FAILED_MESSAGE = "FAILED!!";         // ミスしたときに表示するメッセージ
     private static readonly float CLEAR_COOLTIME = 2f;                  // クリアした後のクールタイム
-    private static readonly float DEAD_LINE = -8f;                      // 死ぬライン
+    private static readonly float DEAD_LINE = -11f;                      // 死ぬライン
 
 
     [SerializeField, Header("CameraControllerを参照")]
@@ -148,6 +148,7 @@ public class Player : Character
         if(transform.position.y < DEAD_LINE)
         {
             isDead = true;
+            ShowMessage(FAILED_MESSAGE);
         }
     }
 
