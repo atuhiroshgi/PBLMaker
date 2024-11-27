@@ -240,7 +240,7 @@ public class Player : Character
     /// <summary>
     /// ƒS[ƒ‹“’B‚ÉŒÄ‚Ôˆ—
     /// </summary>
-    public void GoalReached()
+    public void ReachGoal()
     {
         if (isClear || isDead) return;      // ƒS[ƒ‹‚µ‚Ä‚¢‚½‚è€‚ñ‚Å‚¢‚éê‡‚Íˆ—‚µ‚È‚¢
         isClear = true;
