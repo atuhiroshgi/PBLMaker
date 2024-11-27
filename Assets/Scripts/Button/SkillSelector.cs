@@ -57,7 +57,10 @@ public class SkillSelector : MonoBehaviour
 
     private void OnObjectClicked()
     {
+        if(ExecuteManager.Instance.GetIsExecute()) return;          // 実行中は押せなくする
+
         isOpen = !isOpen;
+        ExecuteManager.Instance.SetSkillSelectorIsOpen(isOpen);     // 実行ボタンの押せる押せないを逆転させる
         targetScale = Vector3.one * (isOpen ? IRIS_IN : IRIS_OUT);
 
         if (isOpen)

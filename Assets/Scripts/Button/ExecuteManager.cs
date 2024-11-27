@@ -31,7 +31,8 @@ public class ExecuteManager : Button
     private Image executeIconImage;
     private Color playColor = new Color(181f / 255f, 218f / 255f, 164f / 255f);     // 黄緑色
     private Color pauseColor = new Color(208f / 255f, 74f / 255f, 57f / 255f);      // 赤
-    private bool isExecute = false;
+    private bool isExecute = false;                     // 実行中かどうか
+    private bool isSkillSelectWindowOpen = false;       // スキルセレクトウィンドウが開いているかどうか
 
     private void Awake()
     {
@@ -55,6 +56,7 @@ public class ExecuteManager : Button
 
     protected override void OnClick()
     {
+        if (isSkillSelectWindowOpen) return;
         base.OnClick();
 
         isExecute = !isExecute;
@@ -70,7 +72,7 @@ public class ExecuteManager : Button
         {
             // 実行した時点でのカメラの座標に戻す
             cameraController.MoveToStartPosition();
-            
+
             DisplayAllUI();
         }
     }
@@ -91,7 +93,7 @@ public class ExecuteManager : Button
             switchingUI.SetActive(true);
         }
     }
-    
+
     /// <summary>
     /// 指定されたUIを全て非表示にする
     /// </summary>
@@ -138,5 +140,10 @@ public class ExecuteManager : Button
     public bool GetIsExecute()
     {
         return isExecute;
+    }
+
+    public void SetSkillSelectorIsOpen(bool isSkillSelectWindowOpen)
+    {
+        this.isSkillSelectWindowOpen = isSkillSelectWindowOpen;
     }
 }
