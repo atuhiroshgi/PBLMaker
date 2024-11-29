@@ -286,6 +286,15 @@ public class Player : Character
     }
 
     /// <summary>
+    /// 死亡のセッター
+    /// </summary>
+    public void SetIsDead()
+    {
+        isDead = true;
+        ShowMessage(FAILED_MESSAGE);
+    }
+
+    /// <summary>
     /// 死んでいるかどうかのゲッター
     /// </summary>
     /// <returns></returns>
