@@ -8,6 +8,10 @@ Tools　→　ScriptAttachmentFinder：
 
 ・任意のスクリプトがアタッチされたオブジェクトを探せる
 
+・Pingをクリックしたらヒエラルキーウィンドウでどこに存在するかが確認できる
+
+・FocusをクリックしたらSceneウィンドウでどこに存在するかを確認できる
+
 
 Tools　→　TaskManager：　
 
