@@ -20,6 +20,7 @@ public class BlockPlacer : MonoBehaviour
 
     private GameObject objectToPlace;
     private bool isEraserMode = false;
+    private bool isGoalSettingMode = false;
 
     private async void Update()
     {
@@ -60,9 +61,17 @@ public class BlockPlacer : MonoBehaviour
         // GridCellコンポーネントを取得
         if (hit.collider != null)
         {
-            if (isEraserMode)
+            if(isEraserMode && isGoalSettingMode)
+            {
+                RemoveGoalComponent(hit);
+            }
+            else if (isEraserMode)
             {
                 DeleteObject(hit);
+            }
+            else if (isGoalSettingMode)
+            {
+                AddGoalScript(hit);
             }
             else
             {
@@ -126,6 +135,7 @@ public class BlockPlacer : MonoBehaviour
         Player player = hit.collider.gameObject.GetComponent<Player>();
         Button button = hit.collider.GetComponent<Button>();
         GridCell cell = hit.collider.GetComponent<GridCell>();
+
         if (button != null)
         {
             return;
@@ -138,8 +148,46 @@ public class BlockPlacer : MonoBehaviour
             cell.gameObject.layer = LayerMask.NameToLayer("Grid");
             cell.gameObject.tag = "Grid";
 
+            RemoveGoalComponent(hit);
+
             // nullを置く(消す)
             cell.SetPlacedObject(null);
+        }
+    }
+
+    /// <summary>
+    /// Goalスクリプトを削除するメソッド
+    /// </summary>
+    /// <param name="hit">指定レイヤー上のコライダーの位置</param>
+    private void RemoveGoalComponent(RaycastHit2D hit)
+    {
+        var targetObject = hit.collider.gameObject;
+
+        if (targetObject != null)
+        {
+            Goal goalComponent = targetObject.GetComponent<Goal>();
+            if (goalComponent != null)
+            {
+                Destroy(goalComponent);
+                hit.collider.gameObject.GetComponent<GridCell>().SetIsGoal(false);
+                Debug.Log($"Goal script removed from {targetObject.name}");
+            }
+        }
+    }
+
+    /// <summary>
+    /// Goalスクリプトを追加するメソッド
+    /// </summary>
+    /// <param name="hit"></param>
+    private void AddGoalScript(RaycastHit2D hit)
+    {
+        // Goalスクリプトを追加
+        var targetObject = hit.collider.gameObject;
+        if(targetObject != null && targetObject.GetComponent<Goal>() == null)
+        {
+            targetObject.AddComponent<Goal>();
+            targetObject.GetComponent<GridCell>().SetIsGoal(true);
+            Debug.Log($"Goal script added to {targetObject.name}");
         }
     }
 
@@ -222,6 +270,15 @@ public class BlockPlacer : MonoBehaviour
     public void SetIsEraserMode(bool isEraserMode)
     {
         this.isEraserMode = isEraserMode;
+    }
+
+    /// <summary>
+    /// ゴール設定モードかどうかのフラグのセッター
+    /// </summary>
+    /// <param name="isGoalSettingMode">ゴール設定モードかどうか</param>
+    public void SetIsGoalSettingMode(bool isGoalSettingMode)
+    {
+        this.isGoalSettingMode = isGoalSettingMode;
     }
 }
 

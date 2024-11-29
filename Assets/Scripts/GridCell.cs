@@ -10,6 +10,8 @@ public class GridCell : Actor
     [SerializeField, Header("このセルにどのブロックが置かれているか")]
     private int blockType = -1;
 
+    [SerializeField, Header("ゴールマーカーオブジェクト")]
+    private GameObject goalMarker;
     [SerializeField, Header("空の時のセルの見た目")]
     private Sprite emptySprite;
     [SerializeField, Header("空で実行された時の見た目")]
@@ -20,11 +22,14 @@ public class GridCell : Actor
     private Collider2D col;
     private GameObject placedObject;        // このセルの上に存在するオブジェクトを格納するためのメンバ
     private SpriteRenderer spriteRenderer;  // このセルの見た目を変更するため
+    private bool isGoal = false;
 
     private async void Awake()
     {
         col = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        
+        if(goalMarker != null) goalMarker.SetActive(false);
 
         while (true)
         {
@@ -32,6 +37,19 @@ public class GridCell : Actor
             if (blockType == -1) spriteRenderer.sprite = emptySprite;
             await UniTask.WaitUntil(() => ExecuteManager.Instance.GetIsExecute());
             if (blockType == -1) spriteRenderer.sprite = null;
+        }
+    }
+
+    private void Update()
+    {
+        if (ExecuteManager.Instance.GetIsExecute())
+        {
+            goalMarker.SetActive(false);
+            return;
+        }
+        if (goalMarker != null)
+        {
+            goalMarker.SetActive(isGoal);
         }
     }
 
@@ -83,6 +101,16 @@ public class GridCell : Actor
         {
 
         }
+    }
+
+    /// <summary>
+    /// ゴールに設定されているかのセッター
+    /// </summary>
+    /// <param name="isGoal">ゴールに設定されているか</param>
+    public void SetIsGoal(bool isGoal)
+    {
+        this.isGoal = isGoal;
+        Debug.Log(isGoal);
     }
 
     /// <summary>
