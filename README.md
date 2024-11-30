@@ -1,6 +1,7 @@
 # PBLMaker
 Unityで開発(6000.0.28f1)
 
+ーーーーーーーーーーーーーーーーー開発に当たっての自作ツールーーーーーーーーーーーーーーーーーーーーー
 
 Tools　→　ScriptAttachmentFinder：
 
@@ -90,7 +91,16 @@ Tools　→　TaskManager：　
 
 12.コメントは処理の説明なら上、定義の説明なら右に書く
 
-//Function()の説明 private void Function() { private int a; //aの説明 }
+//Function()の説明 
+
+private void Function() 
+
+{ 
+
+  private int a; //aの説明 
+  
+}
+
 
 
 13.1つの行に1つの宣言のみを記述する 
@@ -127,14 +137,15 @@ Tools　→　TaskManager：　
 
 
 ーーーーーーーーーーーーーーーーーー出来る限り意識してほしいーーーーーーーーーーーーーーーーーーーーー
-17.ネストを浅くする(出来る限り早期returnをして見やすいコードを心掛ける) 
+
+19.ネストを浅くする(出来る限り早期returnをして見やすいコードを心掛ける) 
 
 〇→ private void Hoge() { if(num == 0) return; num++; }
 
 ×→ private void Hoge() { if(num != 0) { num++; } }
 
 
-18.三項演算子を使う(冗長なif文は三項演算子で省略する) 
+20.三項演算子を使う(冗長なif文は三項演算子で省略する) 
 
 〇→ foo = i == num ? 0 : 1;
 
