@@ -81,9 +81,18 @@ public class TaskManagerWindow : EditorWindow
     {
         GUILayout.Label("フィルタ", EditorStyles.boldLabel);
         string[] filterOptions = new[] { "すべて" }.Concat(categories).ToArray();
+
+        // 非保存オブジェクトを除外
+        filterOptions = filterOptions.Where(category => !IsCategoryDontSave(category)).ToArray();
+
         int selectedFilterIndex = Array.IndexOf(filterOptions, filterCategory);
         selectedFilterIndex = EditorGUILayout.Popup("カテゴリー", selectedFilterIndex, filterOptions);
         filterCategory = filterOptions[Mathf.Clamp(selectedFilterIndex, 0, filterOptions.Length - 1)];
+    }
+
+    private bool IsCategoryDontSave(string category)
+    {
+        return taskData.Tasks.Any(task => task.Category == category && task.IsHidden);
     }
 
     private void DrawSortSection()

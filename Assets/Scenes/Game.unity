@@ -171,6 +171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &44760580
 MonoBehaviour:
@@ -209,6 +211,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 44760577}
+  m_CullTransparentMesh: 1
+--- !u!1 &45781992
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 45781993}
+  - component: {fileID: 45781995}
+  - component: {fileID: 45781994}
+  m_Layer: 5
+  m_Name: DiagonalLine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &45781993
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45781992}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 279284765}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 128, y: 128}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &45781994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45781992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -2634529704843137144, guid: 125578184f538854fa7bdf0eb73af1c9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &45781995
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45781992}
   m_CullTransparentMesh: 1
 --- !u!1 &52882730
 GameObject:
@@ -338,6 +415,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &54869579
 MonoBehaviour:
@@ -429,6 +508,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &69020134
 MonoBehaviour:
@@ -977,6 +1058,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &152794765
 MonoBehaviour:
@@ -1280,6 +1363,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &170503530
 MonoBehaviour:
@@ -1371,6 +1456,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &222982022
 MonoBehaviour:
@@ -1854,6 +1941,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2089655291}
+  - {fileID: 45781993}
   m_Father: {fileID: 74412512}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1912,6 +2000,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 2003211579}
+  diagonalLine: {fileID: 45781992}
   blockType: 0
 --- !u!1 &291883507
 GameObject:
@@ -2185,6 +2275,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 305154164}
   m_CullTransparentMesh: 1
+--- !u!1 &306857986
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 306857987}
+  - component: {fileID: 306857989}
+  - component: {fileID: 306857988}
+  m_Layer: 5
+  m_Name: DiagonalLine (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &306857987
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306857986}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1943409589}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 128, y: 128}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &306857988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306857986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -2634529704843137144, guid: 125578184f538854fa7bdf0eb73af1c9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &306857989
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306857986}
+  m_CullTransparentMesh: 1
 --- !u!1 &326557270
 GameObject:
   m_ObjectHideFlags: 0
@@ -2217,6 +2382,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1504405025}
+  - {fileID: 1951557933}
   m_Father: {fileID: 74412512}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2275,6 +2441,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 2003211579}
+  diagonalLine: {fileID: 1951557932}
   blockType: 0
 --- !u!1 &342080245
 GameObject:
@@ -2552,6 +2720,81 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &350580108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 350580109}
+  - component: {fileID: 350580111}
+  - component: {fileID: 350580110}
+  m_Layer: 5
+  m_Name: DiagonalLine (8)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &350580109
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350580108}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 537062677}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 128, y: 128}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &350580110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350580108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -2634529704843137144, guid: 125578184f538854fa7bdf0eb73af1c9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &350580111
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350580108}
+  m_CullTransparentMesh: 1
 --- !u!1 &353637591
 GameObject:
   m_ObjectHideFlags: 0
@@ -2604,6 +2847,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &353637594
 MonoBehaviour:
@@ -2792,6 +3037,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 357815274}
+  m_CullTransparentMesh: 1
+--- !u!1 &359213115
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 359213116}
+  - component: {fileID: 359213118}
+  - component: {fileID: 359213117}
+  m_Layer: 5
+  m_Name: DiagonalLine (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &359213116
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359213115}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1781700451}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 128, y: 128}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &359213117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359213115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -2634529704843137144, guid: 125578184f538854fa7bdf0eb73af1c9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &359213118
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359213115}
   m_CullTransparentMesh: 1
 --- !u!1 &360710809
 GameObject:
@@ -3220,6 +3540,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &434798725
 MonoBehaviour:
@@ -3259,6 +3581,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 434798722}
   m_CullTransparentMesh: 1
+--- !u!1 &446204273
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 446204274}
+  - component: {fileID: 446204276}
+  - component: {fileID: 446204275}
+  m_Layer: 5
+  m_Name: DiagonalLine (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &446204274
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446204273}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1861520504}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 128, y: 128}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &446204275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446204273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -2634529704843137144, guid: 125578184f538854fa7bdf0eb73af1c9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &446204276
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446204273}
+  m_CullTransparentMesh: 1
 --- !u!1 &456016075
 GameObject:
   m_ObjectHideFlags: 0
@@ -3291,6 +3688,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1643699476}
+  - {fileID: 1586961707}
   m_Father: {fileID: 74412512}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3349,6 +3747,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 2003211579}
+  diagonalLine: {fileID: 1586961706}
   blockType: 0
 --- !u!1 &457539232
 GameObject:
@@ -3524,6 +3924,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 499130054}
+  - component: {fileID: 499130055}
   - component: {fileID: 499130053}
   m_Layer: 0
   m_Name: BlockPlacer
@@ -3566,6 +3967,9 @@ MonoBehaviour:
   - {fileID: 1635579611}
   blockerGameObjects:
   - {fileID: 7756057129233442581}
+  placeBlockSound: {fileID: 8300000, guid: 031e5298ef1cf1c468af0a693cfbb3e2, type: 3}
+  placeObjectSound: {fileID: 8300000, guid: 5475547f6a1befc42920fdc6d6e70a25, type: 3}
+  deleteBlockSound: {fileID: 8300000, guid: 2697995d7d752d04ca3effc531ee42bc, type: 3}
 --- !u!4 &499130054
 Transform:
   m_ObjectHideFlags: 0
@@ -3581,6 +3985,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &499130055
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499130052}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &505903356
 GameObject:
   m_ObjectHideFlags: 0
@@ -3943,6 +4444,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &525529460
 MonoBehaviour:
@@ -4034,6 +4537,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &531619008
 MonoBehaviour:
@@ -4105,6 +4610,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 709890222}
+  - {fileID: 350580109}
   m_Father: {fileID: 74412512}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -4163,6 +4669,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 2003211579}
+  diagonalLine: {fileID: 350580108}
   blockType: 0
 --- !u!1 &539062884
 GameObject:
@@ -4216,6 +4724,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &539062887
 MonoBehaviour:
@@ -4457,6 +4967,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &574980301
 MonoBehaviour:
@@ -4783,6 +5295,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &611054650
 MonoBehaviour:
@@ -5248,6 +5762,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &645826683
 MonoBehaviour:
@@ -5552,6 +6068,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &679968487
 MonoBehaviour:
@@ -5643,6 +6161,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &701511511
 MonoBehaviour:
@@ -5809,6 +6329,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &718065698
 MonoBehaviour:
@@ -5975,6 +6497,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &760479633
 MonoBehaviour:
@@ -6066,6 +6590,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &766110632
 MonoBehaviour:
@@ -6247,6 +6773,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &772402821
 MonoBehaviour:
@@ -6563,6 +7091,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &787317909
 MonoBehaviour:
@@ -6800,6 +7330,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &853504093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 853504094}
+  - component: {fileID: 853504096}
+  - component: {fileID: 853504095}
+  m_Layer: 5
+  m_Name: DiagonalLine (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &853504094
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853504093}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1147470892}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 128, y: 128}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &853504095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853504093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -2634529704843137144, guid: 125578184f538854fa7bdf0eb73af1c9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &853504096
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853504093}
+  m_CullTransparentMesh: 1
 --- !u!1 &857219571
 GameObject:
   m_ObjectHideFlags: 0
@@ -7199,6 +7804,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &943946311
 MonoBehaviour:
@@ -7365,6 +7972,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &950899463
 MonoBehaviour:
@@ -7976,6 +8585,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1021922097
 MonoBehaviour:
@@ -8142,6 +8753,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1039704409
 MonoBehaviour:
@@ -8233,6 +8846,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1060023102
 MonoBehaviour:
@@ -8941,6 +9556,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 982650269}
+  - {fileID: 853504094}
   m_Father: {fileID: 74412512}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -8999,6 +9615,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 2003211579}
+  diagonalLine: {fileID: 853504093}
   blockType: 0
 --- !u!1 &1149975676
 GameObject:
@@ -9127,6 +9745,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1152327152
 MonoBehaviour:
@@ -9431,6 +10051,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1218538879
 MonoBehaviour:
@@ -9672,6 +10294,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1251403096
 MonoBehaviour:
@@ -9710,6 +10334,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1251403093}
+  m_CullTransparentMesh: 1
+--- !u!1 &1264907047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1264907048}
+  - component: {fileID: 1264907050}
+  - component: {fileID: 1264907049}
+  m_Layer: 5
+  m_Name: DiagonalLine (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1264907048
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264907047}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1300992352}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 128, y: 128}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1264907049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264907047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -2634529704843137144, guid: 125578184f538854fa7bdf0eb73af1c9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1264907050
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264907047}
   m_CullTransparentMesh: 1
 --- !u!1 &1270329346
 GameObject:
@@ -9763,6 +10462,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1270329349
 MonoBehaviour:
@@ -9929,6 +10630,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1284921003
 MonoBehaviour:
@@ -10000,6 +10703,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 235108505}
+  - {fileID: 1264907048}
   m_Father: {fileID: 74412512}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -10058,6 +10762,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 2003211579}
+  diagonalLine: {fileID: 1264907047}
   blockType: 0
 --- !u!1 &1307645541
 GameObject:
@@ -10111,6 +10817,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1307645544
 MonoBehaviour:
@@ -10202,6 +10910,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1312677916
 MonoBehaviour:
@@ -10368,6 +11078,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1321185416
 MonoBehaviour:
@@ -10802,6 +11514,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433399188}
   m_CullTransparentMesh: 1
+--- !u!1 &1436772556
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1436772557}
+  - component: {fileID: 1436772559}
+  - component: {fileID: 1436772558}
+  m_Layer: 5
+  m_Name: DiagonalLine (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1436772557
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436772556}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1852871391}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 128, y: 128}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1436772558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436772556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -2634529704843137144, guid: 125578184f538854fa7bdf0eb73af1c9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1436772559
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436772556}
+  m_CullTransparentMesh: 1
 --- !u!1 &1441314286
 GameObject:
   m_ObjectHideFlags: 0
@@ -10854,6 +11641,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1441314289
 MonoBehaviour:
@@ -10925,6 +11714,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1020596599}
+  - {fileID: 1582186731}
   m_Father: {fileID: 74412512}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -10983,6 +11773,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 2003211579}
+  diagonalLine: {fileID: 1582186730}
   blockType: 0
 --- !u!1 &1461222943
 GameObject:
@@ -11126,6 +11918,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1466260243
 MonoBehaviour:
@@ -11412,6 +12206,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1501590561
 MonoBehaviour:
@@ -11578,6 +12374,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1518914767
 MonoBehaviour:
@@ -11649,6 +12447,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1852568720}
+  - {fileID: 1923045561}
   m_Father: {fileID: 74412512}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -11707,6 +12506,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 2003211579}
+  diagonalLine: {fileID: 1923045560}
   blockType: 0
 --- !u!1 &1580568180
 GameObject:
@@ -11760,6 +12561,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1580568183
 MonoBehaviour:
@@ -11798,6 +12601,156 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1580568180}
+  m_CullTransparentMesh: 1
+--- !u!1 &1582186730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1582186731}
+  - component: {fileID: 1582186733}
+  - component: {fileID: 1582186732}
+  m_Layer: 5
+  m_Name: DiagonalLine (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1582186731
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582186730}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1457099345}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 128, y: 128}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1582186732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582186730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -2634529704843137144, guid: 125578184f538854fa7bdf0eb73af1c9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1582186733
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582186730}
+  m_CullTransparentMesh: 1
+--- !u!1 &1586961706
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1586961707}
+  - component: {fileID: 1586961709}
+  - component: {fileID: 1586961708}
+  m_Layer: 5
+  m_Name: DiagonalLine (9)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1586961707
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586961706}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 456016076}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 128, y: 128}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1586961708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586961706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -2634529704843137144, guid: 125578184f538854fa7bdf0eb73af1c9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1586961709
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586961706}
   m_CullTransparentMesh: 1
 --- !u!1 &1605689582
 GameObject:
@@ -11965,7 +12918,6 @@ MonoBehaviour:
   blockPlacer: {fileID: 499130053}
   defaultSprite: {fileID: 331435414, guid: 92209ecf95c7abc47a8586240853fef4, type: 3}
   goalSettingModeSprite: {fileID: 1058036560, guid: 042d6699fd4dfc942af74f75e12b5719, type: 3}
-  maskImage: {fileID: 1903170650}
 --- !u!1 &1643699475
 GameObject:
   m_ObjectHideFlags: 0
@@ -12168,6 +13120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1662798631
 MonoBehaviour:
@@ -12334,6 +13288,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1698413322
 MonoBehaviour:
@@ -12425,6 +13381,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1704829961
 MonoBehaviour:
@@ -12516,6 +13474,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1713828362
 MonoBehaviour:
@@ -12682,6 +13642,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1734850845
 MonoBehaviour:
@@ -12773,6 +13735,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1735148834
 MonoBehaviour:
@@ -12966,6 +13930,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1335059625}
+  - {fileID: 359213116}
   m_Father: {fileID: 74412512}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -13024,6 +13989,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 2003211579}
+  diagonalLine: {fileID: 359213115}
   blockType: 0
 --- !u!1 &1790944381
 GameObject:
@@ -13124,6 +14091,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1804606561
 MonoBehaviour:
@@ -13215,6 +14184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1818865552
 MonoBehaviour:
@@ -13381,6 +14352,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1835147820
 MonoBehaviour:
@@ -13472,6 +14445,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1847361890
 MonoBehaviour:
@@ -13618,6 +14593,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2137060613}
+  - {fileID: 1436772557}
   m_Father: {fileID: 74412512}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -13676,6 +14652,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 2003211579}
+  diagonalLine: {fileID: 1436772556}
   blockType: 0
 --- !u!1 &1858158673
 GameObject:
@@ -13784,6 +14762,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 120962115}
+  - {fileID: 446204274}
   m_Father: {fileID: 74412512}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -13842,6 +14821,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 2003211579}
+  diagonalLine: {fileID: 446204273}
   blockType: 0
 --- !u!1 &1870545032
 GameObject:
@@ -14210,6 +15191,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1898378459
 MonoBehaviour:
@@ -14376,6 +15359,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1905519129
 MonoBehaviour:
@@ -14467,6 +15452,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1908294379
 MonoBehaviour:
@@ -14780,6 +15767,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916494700}
   m_CullTransparentMesh: 1
+--- !u!1 &1923045560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1923045561}
+  - component: {fileID: 1923045563}
+  - component: {fileID: 1923045562}
+  m_Layer: 5
+  m_Name: DiagonalLine (10)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1923045561
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923045560}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1536833620}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 128, y: 128}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1923045562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923045560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -2634529704843137144, guid: 125578184f538854fa7bdf0eb73af1c9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1923045563
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923045560}
+  m_CullTransparentMesh: 1
 --- !u!1 &1927519393
 GameObject:
   m_ObjectHideFlags: 0
@@ -14907,6 +15969,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1934998551
 MonoBehaviour:
@@ -14998,6 +16062,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1942719654
 MonoBehaviour:
@@ -15069,6 +16135,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1149975677}
+  - {fileID: 306857987}
   m_Father: {fileID: 74412512}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -15127,7 +16194,84 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 2003211579}
+  diagonalLine: {fileID: 306857986}
   blockType: 0
+--- !u!1 &1951557932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1951557933}
+  - component: {fileID: 1951557935}
+  - component: {fileID: 1951557934}
+  m_Layer: 5
+  m_Name: DiagonalLine (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1951557933
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951557932}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 326557271}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 128, y: 128}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1951557934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951557932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -2634529704843137144, guid: 125578184f538854fa7bdf0eb73af1c9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1951557935
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951557932}
+  m_CullTransparentMesh: 1
 --- !u!1 &1963831956
 GameObject:
   m_ObjectHideFlags: 0
@@ -15180,6 +16324,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1963831959
 MonoBehaviour:
@@ -15271,6 +16417,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &1983956498
 MonoBehaviour:
@@ -15528,6 +16676,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &2033828010
 MonoBehaviour:
@@ -15619,6 +16769,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &2038087284
 MonoBehaviour:
@@ -16176,6 +17328,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &2131018170
 MonoBehaviour:
@@ -16345,6 +17499,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paletteController: {fileID: 74412515}
+  eraserButton: {fileID: 0}
+  diagonalLine: {fileID: 0}
   blockType: 0
 --- !u!114 &2136806534
 MonoBehaviour:

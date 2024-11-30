@@ -64,6 +64,16 @@ public class GridCell : Actor
     }
 
     /// <summary>
+    /// 設置したブロックタイプが前のと違うかどうか
+    /// </summary>
+    /// <param name="blockType">設置するブロックタイプ</param>
+    /// <returns>違うならtrue, 同じならfalse</returns>
+    public bool canPlaySEBlock(int blockType)
+    {
+        return this.blockType != blockType;
+    }
+
+    /// <summary>
     /// ブロックタイプに応じた見た目の設定
     /// </summary>
     private void UpdateAppearance()
@@ -101,6 +111,16 @@ public class GridCell : Actor
         {
 
         }
+    }
+
+    /// <summary>
+    /// 設置したオブジェクトが前のと違うかどうか
+    /// </summary>
+    /// <param name="placeObject">設置するオブジェクト</param>
+    /// <returns>違うならtrue, 同じならfalse</returns>
+    public bool canPlaySEObject(GameObject placeObject)
+    {
+        return placedObject != placeObject;
     }
 
     /// <summary>

@@ -18,9 +18,20 @@ public class BlockPlacer : MonoBehaviour
     [SerializeField, Header("重なっている間ブロックを置いてほしくないゲームオブジェクト")]
     private List<GameObject> blockerGameObjects;
 
+    [Header("効果音の設定")]
+    [SerializeField] private AudioClip placeBlockSound;     // ブロック配置時の効果音
+    [SerializeField] private AudioClip placeObjectSound;    // オブジェクト配置時の効果音
+    [SerializeField] private AudioClip deleteBlockSound;    // ブロック削除時の効果音
+
     private GameObject objectToPlace;
+    private AudioSource audioSource;
     private bool isEraserMode = false;
     private bool isGoalSettingMode = false;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private async void Update()
     {
@@ -98,6 +109,12 @@ public class BlockPlacer : MonoBehaviour
         GridCell cell = hit.collider.GetComponent<GridCell>();
         if (cell != null)
         {
+            // ブロック配置時の効果音を再生
+            if(cell.canPlaySEBlock(blockType) && placeBlockSound != null)
+            {
+                audioSource.PlayOneShot(placeBlockSound);
+            }
+
             // ブロックタイプを設定
             cell.SetBlockType(blockType);
 
@@ -108,6 +125,7 @@ public class BlockPlacer : MonoBehaviour
             {
                 cell.gameObject.tag = "Ground";
             }
+
         }
     }
 
@@ -120,8 +138,15 @@ public class BlockPlacer : MonoBehaviour
         GridCell cell = hit.collider.GetComponent<GridCell>();
         if(cell != null)
         {
+            // オブジェクト配置時の効果音を再生
+            if (cell.canPlaySEObject(objectToPlace) && placeObjectSound != null)
+            {
+                audioSource.PlayOneShot(placeObjectSound);
+            }
+
             cell.SetPlacedObject(null);
             cell.SetPlacedObject(objectToPlace);
+
         }
     }
 
@@ -143,6 +168,12 @@ public class BlockPlacer : MonoBehaviour
 
         if (cell != null)
         {
+            // ブロック配置時の効果音を再生
+            if (cell.canPlaySEBlock(-1) && placeBlockSound != null)
+            {
+                audioSource.PlayOneShot(deleteBlockSound);
+            }
+
             // ブロックタイプを設定
             cell.SetBlockType(-1);
             cell.gameObject.layer = LayerMask.NameToLayer("Grid");

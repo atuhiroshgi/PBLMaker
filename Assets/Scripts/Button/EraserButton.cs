@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,5 +32,14 @@ public class EraserButton : Button
         blockPlacer.SetIsEraserMode(isEraserMode);
         eraserButtonImage.sprite = isEraserMode ? eraserModeSprite : defaultSprite;
 
+    }
+
+    /// <summary>
+    /// 消しゴムモードが有効かどうか
+    /// </summary>
+    /// <returns>消しゴムモードかどうか</returns>
+    public bool GetIsEraserMode()
+    {
+        return isEraserMode;
     }
 }
