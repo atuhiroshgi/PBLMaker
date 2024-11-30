@@ -1,8 +1,6 @@
 # PBLMaker
 Unityで開発(6000.0.28f1)
 
-学籍番号 1223839　メールアドレス　c1223839@st.kanazawa-it.ac.jp　才戸淳大
-
 
 Tools　→　ScriptAttachmentFinder：
 
@@ -141,3 +139,8 @@ Tools　→　TaskManager：　
 〇→ foo = i == num ? 0 : 1;
 
 ×→ if(i == num) { foo = 0; } else { foo = 1; }
+
+
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+学籍番号:1223839 名列番号:3FM2-029 メールアドレス:c1223839@st.kanazawa-it.ac.jp 　　才戸　淳大
