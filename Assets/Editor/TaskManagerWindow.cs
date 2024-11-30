@@ -13,20 +13,17 @@ public class TaskManagerWindow : EditorWindow
     private int selectedCategoryIndex = 0;
     private string filterCategory = "すべて";
 
-    private Task selectedTask;  // 選択されたタスクを保持
+    private Task selectedTask;
 
-    // 優先度の選択肢
     private string[] priorityOptions = { "低", "中", "高" };
-    private int selectedPriorityIndex = 0;  // 初期は「低」
+    private int selectedPriorityIndex = 0;
 
-    // 難易度の選択肢
     private string[] difficultyOptions = { "簡単", "中", "難しい" };
-    private int selectedDifficultyIndex = 0;  // 初期は「簡単」
+    private int selectedDifficultyIndex = 0;
 
-    // ソートオプション
-    private enum SortBy { Priority, Difficulty }  // 並べ替え基準の列挙体
-    private SortBy selectedSortBy = SortBy.Priority;  // 初期は優先度でソート
-    private bool sortDescending = false;  // 昇順ならfalse, 降順ならtrue
+    private enum SortBy { Priority, Difficulty }
+    private SortBy selectedSortBy = SortBy.Priority;
+    private bool sortDescending = false;
 
     [MenuItem("Tools/Task Manager")]
     public static void ShowWindow()
@@ -36,7 +33,6 @@ public class TaskManagerWindow : EditorWindow
 
     private void OnEnable()
     {
-        // TaskDataをプロジェクトからロードまたは新規作成
         taskData = AssetDatabase.LoadAssetAtPath<TaskData>("Assets/TaskData.asset");
         if (taskData == null)
         {
@@ -50,92 +46,80 @@ public class TaskManagerWindow : EditorWindow
     {
         GUILayout.Label("タスク管理ツール", EditorStyles.boldLabel);
 
-        // タスク追加フォーム
+        DrawTaskAdditionSection();
+        GUILayout.Space(10);
+
+        DrawFilterSection();
+        GUILayout.Space(10);
+
+        DrawSortSection();
+        GUILayout.Space(10);
+
+        DrawTaskList();
+
+        GUILayout.Space(10);
+
+        DrawSelectedTaskDetails();
+    }
+
+    private void DrawTaskAdditionSection()
+    {
         GUILayout.Label("新しいタスクを追加");
         newTaskTitle = EditorGUILayout.TextField("タイトル", newTaskTitle);
         newTaskDescription = EditorGUILayout.TextField("説明", newTaskDescription);
         selectedCategoryIndex = EditorGUILayout.Popup("カテゴリー", selectedCategoryIndex, categories);
-
-        // 優先度を選択するドロップダウンメニューを追加
         selectedPriorityIndex = EditorGUILayout.Popup("優先度", selectedPriorityIndex, priorityOptions);
-
-        // 難易度を選択するドロップダウンメニューを追加
         selectedDifficultyIndex = EditorGUILayout.Popup("難易度", selectedDifficultyIndex, difficultyOptions);
 
         if (GUILayout.Button("タスクを追加"))
         {
             AddTask();
         }
+    }
 
-        GUILayout.Space(10);
-
-        // フィルタセクション
+    private void DrawFilterSection()
+    {
         GUILayout.Label("フィルタ", EditorStyles.boldLabel);
         string[] filterOptions = new[] { "すべて" }.Concat(categories).ToArray();
-        int selectedFilterIndex = EditorGUILayout.Popup("カテゴリー", Array.IndexOf(filterOptions, filterCategory), filterOptions);
-        filterCategory = filterOptions[selectedFilterIndex];
+        int selectedFilterIndex = Array.IndexOf(filterOptions, filterCategory);
+        selectedFilterIndex = EditorGUILayout.Popup("カテゴリー", selectedFilterIndex, filterOptions);
+        filterCategory = filterOptions[Mathf.Clamp(selectedFilterIndex, 0, filterOptions.Length - 1)];
+    }
 
-        GUILayout.Space(10);
-
-        // ソートオプション
+    private void DrawSortSection()
+    {
         GUILayout.Label("ソート", EditorStyles.boldLabel);
-        selectedSortBy = (SortBy)EditorGUILayout.EnumPopup("ソート基準", selectedSortBy);  // 優先度と難易度の選択肢
+        selectedSortBy = (SortBy)EditorGUILayout.EnumPopup("ソート基準", selectedSortBy);
         sortDescending = EditorGUILayout.Toggle("降順でソート", sortDescending);
+    }
 
-        GUILayout.Space(10);
-
-        // タスクリスト表示
+    private void DrawTaskList()
+    {
         GUILayout.Label("タスクリスト", EditorStyles.boldLabel);
 
-        // 表頭 (ヘッダー) 追加
         EditorGUILayout.BeginHorizontal();
-        GUILayout.Label("完了", GUILayout.Width(50));
         GUILayout.Label("タイトル", GUILayout.Width(150));
         GUILayout.Label("カテゴリー", GUILayout.Width(100));
-        GUILayout.Label("優先度", GUILayout.Width(60));  // 優先度
-        GUILayout.Label("難易度", GUILayout.Width(80));  // 難易度
-        GUILayout.Label("操作", GUILayout.Width(120));  // 操作 (選択、削除)
+        GUILayout.Label("優先度", GUILayout.Width(60));
+        GUILayout.Label("難易度", GUILayout.Width(80));
+        GUILayout.Label("操作", GUILayout.Width(120));
         EditorGUILayout.EndHorizontal();
 
         scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
 
-        // フィルタ適用
-        var filteredTasks = filterCategory == "すべて"
-            ? taskData.Tasks
-            : taskData.Tasks.Where(task => task.Category == filterCategory).ToList();
+        var filteredTasks = GetFilteredAndSortedTasks();
 
-        // ソートの適用
-        if (selectedSortBy == SortBy.Priority)
-        {
-            filteredTasks = sortDescending
-                ? filteredTasks.OrderByDescending(task => task.Priority).ToList()  // 優先度で降順
-                : filteredTasks.OrderBy(task => task.Priority).ToList();  // 優先度で昇順
-        }
-        else if (selectedSortBy == SortBy.Difficulty)
-        {
-            filteredTasks = sortDescending
-                ? filteredTasks.OrderByDescending(task => task.Difficulty).ToList()  // 難易度で降順
-                : filteredTasks.OrderBy(task => task.Difficulty).ToList();  // 難易度で昇順
-        }
-
-        // タスクリスト表示
         foreach (var task in filteredTasks)
         {
             EditorGUILayout.BeginHorizontal();
-
-            // 完了状態を表示
-            task.IsCompleted = EditorGUILayout.Toggle(task.IsCompleted, GUILayout.Width(50));
-
-            // タスクのタイトル、カテゴリー、優先度、難易度
             GUILayout.Label(task.Title, GUILayout.Width(150));
             GUILayout.Label(task.Category, GUILayout.Width(100));
-            GUILayout.Label(task.Priority.ToString(), GUILayout.Width(60));  // 優先度
-            GUILayout.Label(task.Difficulty.ToString(), GUILayout.Width(80));  // 難易度
+            GUILayout.Label(task.Priority.ToString(), GUILayout.Width(60));
+            GUILayout.Label(task.Difficulty.ToString(), GUILayout.Width(80));
 
-            // 操作ボタン（選択、削除）
             if (GUILayout.Button("選択", GUILayout.Width(60)))
             {
-                selectedTask = task;  // タスクを選択
+                selectedTask = task;
             }
 
             if (GUILayout.Button("削除", GUILayout.Width(60)))
@@ -148,23 +132,23 @@ public class TaskManagerWindow : EditorWindow
         }
 
         EditorGUILayout.EndScrollView();
+    }
 
-        GUILayout.Space(10);
-
-        // 選択したタスクの詳細を表示
+    private void DrawSelectedTaskDetails()
+    {
         if (selectedTask != null)
         {
             GUILayout.Label("選択されたタスクの詳細", EditorStyles.boldLabel);
             GUILayout.Label("タイトル: " + selectedTask.Title);
             GUILayout.Label("カテゴリー: " + selectedTask.Category);
             GUILayout.Label("説明: " + selectedTask.Description);
-            GUILayout.Label("優先度: " + selectedTask.Priority.ToString());  // 優先度の表示
-            GUILayout.Label("難易度: " + selectedTask.Difficulty.ToString());  // 難易度の表示
+            GUILayout.Label("優先度: " + selectedTask.Priority.ToString());
+            GUILayout.Label("難易度: " + selectedTask.Difficulty.ToString());
 
             if (GUILayout.Button("タスクの削除"))
             {
                 RemoveTask(selectedTask);
-                selectedTask = null;  // 削除後に選択を解除
+                selectedTask = null;
             }
         }
     }
@@ -173,14 +157,13 @@ public class TaskManagerWindow : EditorWindow
     {
         if (string.IsNullOrEmpty(newTaskTitle)) return;
 
-        Task newTask = new Task
+        var newTask = new Task
         {
             Title = newTaskTitle,
             Description = newTaskDescription,
             Category = categories[selectedCategoryIndex],
-            Priority = (PriorityLevel)selectedPriorityIndex,  // 優先度を設定
-            Difficulty = (DifficultyLevel)selectedDifficultyIndex,  // 難易度を設定
-            IsCompleted = false
+            Priority = (PriorityLevel)selectedPriorityIndex,
+            Difficulty = (DifficultyLevel)selectedDifficultyIndex
         };
 
         taskData.Tasks.Add(newTask);
@@ -194,5 +177,27 @@ public class TaskManagerWindow : EditorWindow
     {
         taskData.Tasks.Remove(task);
         EditorUtility.SetDirty(taskData);
+    }
+
+    private System.Collections.Generic.List<Task> GetFilteredAndSortedTasks()
+    {
+        var filteredTasks = filterCategory == "すべて"
+            ? taskData.Tasks
+            : taskData.Tasks.Where(task => task.Category == filterCategory).ToList();
+
+        if (selectedSortBy == SortBy.Priority)
+        {
+            filteredTasks = sortDescending
+                ? filteredTasks.OrderByDescending(task => task.Priority).ToList()
+                : filteredTasks.OrderBy(task => task.Priority).ToList();
+        }
+        else if (selectedSortBy == SortBy.Difficulty)
+        {
+            filteredTasks = sortDescending
+                ? filteredTasks.OrderByDescending(task => task.Difficulty).ToList()
+                : filteredTasks.OrderBy(task => task.Difficulty).ToList();
+        }
+
+        return filteredTasks;
     }
 }
