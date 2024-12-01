@@ -23,6 +23,15 @@ public class CloseButton : Button
     }
 
     /// <summary>
+    /// ストレージを外部から閉じたいときのメソッド
+    /// </summary>
+    public void SlideInput()
+    {
+        // スライドを返す
+        SlideToTargetPositionAsync(blockStorage, slideDuration).Forget();
+    }
+
+    /// <summary>
     /// UniTaskで非同期にスライド処理を行う
     /// </summary>
     /// <param name="target">動かすオブジェクト</param>

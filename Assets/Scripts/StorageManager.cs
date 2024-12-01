@@ -5,6 +5,8 @@ public class StorageManager : MonoBehaviour
 {
     private static readonly int LINE_LENGTH = 5;
 
+    [SerializeField, Header("PaletteControllerの参照")]
+    private PaletteController paletteController;
     [SerializeField, Header("BlockStorageDataの参照")]
     private BlockStorageData blockStorageData;
     [SerializeField, Header("Storageのアイコン(ブロック)")]
@@ -17,7 +19,6 @@ public class StorageManager : MonoBehaviour
     private Image[] other1IconImage;
     [SerializeField, Header("Storageのアイコン(その他2)")]
     private Image[] other2IconImage;
-
 
     private LineData[] lineDatas;
 

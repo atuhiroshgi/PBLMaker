@@ -54,6 +54,7 @@ public class PaletteController : MonoBehaviour
                 // アイコン画像を設定
                 paletteIcons[i].sprite = blockData.BlockSprite;
                 paletteIcons[i].enabled = true;
+                paletteIconBgs[i].enabled = true;
                 paletteIconBgs[i].color = i == selectedBlockType ? selectedColor : defaultColor;
                 blockButtons[i].SetBlockType(blockData.BlockType);
 
@@ -105,5 +106,15 @@ public class PaletteController : MonoBehaviour
     public bool GetSelectedIsBlock()
     {
         return selectedIsBlock;
+    }
+
+    /// <summary>
+    /// 何行目が選択されているかのインデックスのセッター
+    /// </summary>
+    /// <param name="index">何行目が選択されているか</param>
+    public void GetSelectedLineIndex(int index)
+    {
+        targetLineIndex = index;
+        Init();
     }
 }

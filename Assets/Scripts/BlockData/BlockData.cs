@@ -7,7 +7,7 @@ public class BlockData : ScriptableObject
     private GameObject prefab;
     [SerializeField, Header("ブロックのアイコン画像")]
     private Sprite blockSprite;
-    [SerializeField, Header("ブロックに対応したblockIndex")]
+    [SerializeField, Header("ブロックに対応したblockIndex：行番号 * 12 + 1に設定してください")]
     private int blockType;
     [SerializeField, Header("このデータがブロックかどうか")]
     private bool isBlock = true;
