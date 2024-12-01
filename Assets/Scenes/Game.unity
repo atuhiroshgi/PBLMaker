@@ -17690,7 +17690,7 @@ GameObject:
   - component: {fileID: 713409587137025768}
   - component: {fileID: 8802579625807840914}
   - component: {fileID: 2965395114514394400}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17727,7 +17727,7 @@ GameObject:
   - component: {fileID: 8340509793872120007}
   - component: {fileID: 8340509793872120006}
   - component: {fileID: 8340509793872120009}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}

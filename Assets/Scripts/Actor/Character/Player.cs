@@ -183,6 +183,19 @@ public class Player : Character
         messageText.gameObject.SetActive(false);
     }
 
+    public void FaceTarget(Vector2 targetPosition)
+    {
+        // 現在位置から目標地点への移動
+        Vector2 direction = (targetPosition - rb.position).normalized;
+        rb.MovePosition(rb.position + direction * moveSpeed * Time.deltaTime);
+
+        // 目標地点に到達したら停止
+        if(Vector2.Distance(rb.position, targetPosition) < 0.1f)
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
+    }
+
     /// <summary>
     /// メッセージを表示するメソッド
     /// </summary>

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Line2
   m_EditorClassIdentifier: 
   blockData:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 8e44fed26cb04dd4ab2f86bddff1e7ee, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
