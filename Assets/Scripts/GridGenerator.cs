@@ -16,6 +16,7 @@ public class GridGenerator : MonoBehaviour
 
     private GridCell[,] gridCells;  // 各セルの参照を保持する2次元配列
 
+
     /// <summary>
     /// グリッドを生成するメソッド
     /// </summary>
@@ -113,5 +114,10 @@ public class GridGenerator : MonoBehaviour
                 }
             }
         }
+    }
+
+    public GridCell[,] GetGridCells()
+    {
+        return gridCells;
     }
 }
