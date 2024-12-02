@@ -7,6 +7,11 @@ public class ConfilmationDialog : MonoBehaviour
 
     private System.Action onConfilm;
 
+    private void Start()
+    {
+        dialogPanel.SetActive(false);
+    }
+
     public void Show(System.Action confilmAction)
     {
         dialogPanel.SetActive(true);

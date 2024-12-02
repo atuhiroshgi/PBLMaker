@@ -13,6 +13,8 @@ public class LoadButton : Button
     {
         base.OnClick();
 
+        gridManager.ReloadGridCells();
+
         if (confilmationDialog != null)
         {
             confilmationDialog.Show(() =>

@@ -15,12 +15,18 @@ public class GridManager : MonoBehaviour
 
         if (gridGenerator != null)
         {
-            gridCells = gridGenerator.GetGridCells();  // GetGridCells() が正しく実装されていることを確認
+            gridCells = gridGenerator.GetGridCells();
+            Debug.Log($"gridCells が初期化されました: {gridCells != null}");
         }
         else
         {
             Debug.LogError("GridGeneratorが見つかりません！");
         }
+    }
+
+    public void ReloadGridCells()
+    {
+        gridCells = gridGenerator.GetGridCells();
     }
 
     public void SaveGridData(string filePath)
@@ -54,6 +60,12 @@ public class GridManager : MonoBehaviour
 
     public void LoadGridData(string filePath)
     {
+        if (gridCells == null)
+        {
+            Debug.LogError("gridCells が初期化されていません。");
+            return;
+        }
+
         if (!File.Exists(filePath))
         {
             Debug.LogError("ファイルが見つかりません!");
@@ -85,14 +97,24 @@ public class GridManager : MonoBehaviour
                     }
                 }
             }
+            else
+            {
+                Debug.LogWarning($"セル ({cellData.xGrid}, {cellData.yGrid}) が見つかりません");
+            }
         }
     }
 
     private GridCell GetCellAtPosition(int x, int y)
     {
+        if (gridCells == null)
+        {
+            Debug.LogError("gridCells が初期化されていません。");
+            return null;
+        }
+
         foreach (var cell in gridCells)
         {
-            if (cell.GetX() == x && cell.GetY() == y)
+            if (cell != null && cell.GetX() == x && cell.GetY() == y)
                 return cell;
         }
         return null; // 見つからない場合はnullを返す

@@ -14,6 +14,8 @@ public class SaveButton : Button
     {
         base.OnClick();
 
+        gridManager.ReloadGridCells();
+
         if(confilmationDialog != null)
         {
             confilmationDialog.Show(() =>
