@@ -233,6 +233,7 @@ public class Player : Character
             {
                 // “G‚ğ€–Só‘Ô‚É‚·‚é
                 enemy.SetIsDead(true);
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             }
             else
             {
