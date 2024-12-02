@@ -1,6 +1,7 @@
 using System.IO;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEditor;
 
 public class GridManager : MonoBehaviour
 {
@@ -41,13 +42,25 @@ public class GridManager : MonoBehaviour
                 GridCell cell = gridCells[x, y];
                 if (cell.GetBlockType() != -1 || cell.GetIsGoal() || cell.GetPlacedObject() != null)
                 {
+                    string placedObjectName = null;
+
+                    if (cell.GetPlacedObject() != null)
+                    {
+#if UNITY_EDITOR
+                        var prefab = PrefabUtility.GetCorrespondingObjectFromSource(cell.GetPlacedObject());
+                        placedObjectName = prefab != null ? prefab.name : cell.GetPlacedObject().name;
+#else
+                    placedObjectName = cell.GetPlacedObject().name.Replace("(Clone)", "").Trim();
+#endif
+                    }
+
                     CellData cellData = new CellData
                     {
                         xGrid = cell.GetX(),
                         yGrid = cell.GetY(),
                         blockType = cell.GetBlockType(),
                         isGoal = cell.GetIsGoal(),
-                        placedObjectName = cell.GetPlacedObject() != null ? cell.GetPlacedObject().name : null
+                        placedObjectName = placedObjectName
                     };
                     gridData.cells.Add(cellData);
                 }
@@ -60,12 +73,6 @@ public class GridManager : MonoBehaviour
 
     public void LoadGridData(string filePath)
     {
-        if (gridCells == null)
-        {
-            Debug.LogError("gridCells が初期化されていません。");
-            return;
-        }
-
         if (!File.Exists(filePath))
         {
             Debug.LogError("ファイルが見つかりません!");
@@ -83,23 +90,26 @@ public class GridManager : MonoBehaviour
                 cell.SetBlockType(cellData.blockType);
                 cell.SetIsGoal(cellData.isGoal);
 
-                // 配置されたオブジェクトの復元
                 if (!string.IsNullOrEmpty(cellData.placedObjectName))
                 {
                     GameObject prefab = Resources.Load<GameObject>(cellData.placedObjectName);
+
+                    if (prefab == null)
+                    {
+                        // セーブデータに (Clone) が含まれている場合の対応
+                        string adjustedName = cellData.placedObjectName.Replace("(Clone)", "").Trim();
+                        prefab = Resources.Load<GameObject>(adjustedName);
+                    }
+
                     if (prefab != null)
                     {
                         cell.SetPlacedObject(prefab);
                     }
                     else
                     {
-                        Debug.LogWarning($"プレハブ '{cellData.placedObjectName}' が見つかりません");
+                        Debug.LogError($"プレハブ '{cellData.placedObjectName}' が見つかりません");
                     }
                 }
-            }
-            else
-            {
-                Debug.LogWarning($"セル ({cellData.xGrid}, {cellData.yGrid}) が見つかりません");
             }
         }
     }
