@@ -28,7 +28,7 @@ public class GridCell : Actor
     {
         col = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        
+
         if(goalMarker != null) goalMarker.SetActive(false);
 
         while (true)
@@ -130,7 +130,6 @@ public class GridCell : Actor
     public void SetIsGoal(bool isGoal)
     {
         this.isGoal = isGoal;
-        Debug.Log(isGoal);
     }
 
     /// <summary>
@@ -167,5 +166,20 @@ public class GridCell : Actor
     public int GetY()
     {
         return yGrid;
+    }
+
+    public int GetBlockType()
+    {
+        return blockType;
+    }
+
+    public bool GetIsGoal()
+    {
+        return isGoal;
+    }
+
+    public GameObject GetPlacedObject()
+    {
+        return placedObject;
     }
 }
