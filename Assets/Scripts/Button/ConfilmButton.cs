@@ -2,12 +2,15 @@ using UnityEngine;
 
 public class ConfilmButton : Button
 {
-    [SerializeField, Header("確認ダイアログの参照")]
+    [SerializeField, Header("ConfilmationDialogの参照")]
     private ConfilmationDialog confilmationDialog;
+    [SerializeField, Header("DataButtonManagerの参照")]
+    private DataButtonManager dataButtonManager;
 
     protected override void OnClick()
     {
         base.OnClick();
         confilmationDialog.Confilm();
+        dataButtonManager.ToggleWindow(false);
     }
 }

@@ -20,8 +20,12 @@ public class DataButtonManager : Button
         base.OnClick();
 
         isOpen = !isOpen;
+        ToggleWindow(isOpen);
+    }
 
-        for(int i = 0; i < buttons.Length; i++)
+    public void ToggleWindow(bool isOpen)
+    {
+        for (int i = 0; i < buttons.Length; i++)
         {
             buttons[i].SetActive(isOpen);
         }

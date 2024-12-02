@@ -10333,6 +10333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   confilmationDialog: {fileID: 347167510}
+  dataButtonManager: {fileID: 1009434015}
 --- !u!1 &1186303585
 GameObject:
   m_ObjectHideFlags: 0
@@ -13546,6 +13547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   confilmationDialog: {fileID: 347167510}
+  dataButtonManager: {fileID: 1009434015}
 --- !u!1 &1635579611
 GameObject:
   m_ObjectHideFlags: 0
