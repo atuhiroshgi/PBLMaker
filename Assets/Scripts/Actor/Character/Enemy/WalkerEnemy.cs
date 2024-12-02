@@ -13,14 +13,15 @@ public class WalkerEnemy : MoveEnemy
     {
         base.Update();
 
+        // 実行時のみ巡回
         if (ExecuteManager.Instance.GetIsExecute())
         {
             Patrol();
         }
         else
         {
-            StopMovement();
-            SetFacingLeft();
+            StopMovement();     // 動きを止める
+            SetFacingLeft();    // 初期状態で左向きに設定
         }
     }
 
@@ -29,7 +30,12 @@ public class WalkerEnemy : MoveEnemy
     /// </summary>
     protected void Patrol()
     {
-        if (player.GetIsDead()) return;     //プレイヤーが死んでいたらパトロールを停止
+        // プレイヤーが死亡していたら処理を終了
+        if (player.GetIsDead())
+        {
+            StopMovement();
+            return;
+        }
 
         // 壁に当たったかどうかをレイキャストで判断して反転
         if (IsHittingWall())
@@ -37,9 +43,11 @@ public class WalkerEnemy : MoveEnemy
             Flip();
         }
 
-        // 現在の方向に従って移動する
-        direction = isFacingLeft ? -1f : 1f;
+        // 地上か空中かで移動速度を設定
         currentMoveSpeed = groundCheck.GetIsGround() ? moveSpeed : airMoveFactor;
+
+        // 現在の方向に基づいて移動
+        float direction = isFacingLeft ? -1f : 1f;
         rb.linearVelocity = new Vector2(currentMoveSpeed * direction, rb.linearVelocity.y);
     }
 }
