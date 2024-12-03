@@ -85,36 +85,92 @@
             "placedObjectName": ""
         },
         {
-            "xGrid": 5,
-            "yGrid": 4,
+            "xGrid": 4,
+            "yGrid": 0,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 4,
+            "yGrid": 1,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 4,
+            "yGrid": 2,
             "blockType": 0,
             "isGoal": false,
             "placedObjectName": ""
         },
         {
             "xGrid": 5,
-            "yGrid": 5,
-            "blockType": 0,
+            "yGrid": 0,
+            "blockType": 1,
             "isGoal": false,
             "placedObjectName": ""
         },
         {
             "xGrid": 5,
-            "yGrid": 6,
+            "yGrid": 1,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 5,
+            "yGrid": 2,
             "blockType": 0,
             "isGoal": false,
             "placedObjectName": ""
         },
         {
             "xGrid": 6,
-            "yGrid": 4,
+            "yGrid": 0,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 6,
+            "yGrid": 1,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 6,
+            "yGrid": 2,
             "blockType": 0,
             "isGoal": false,
             "placedObjectName": ""
         },
         {
             "xGrid": 6,
-            "yGrid": 6,
+            "yGrid": 3,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 7,
+            "yGrid": 0,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 7,
+            "yGrid": 1,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 7,
+            "yGrid": 2,
             "blockType": 0,
             "isGoal": false,
             "placedObjectName": ""
@@ -122,20 +178,41 @@
         {
             "xGrid": 7,
             "yGrid": 3,
-            "blockType": 0,
+            "blockType": 1,
             "isGoal": false,
             "placedObjectName": ""
         },
         {
             "xGrid": 7,
-            "yGrid": 6,
-            "blockType": 0,
+            "yGrid": 4,
+            "blockType": 1,
             "isGoal": false,
             "placedObjectName": ""
         },
         {
             "xGrid": 7,
-            "yGrid": 7,
+            "yGrid": 5,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 8,
+            "yGrid": 0,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 8,
+            "yGrid": 1,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 8,
+            "yGrid": 2,
             "blockType": 0,
             "isGoal": false,
             "placedObjectName": ""
@@ -143,104 +220,447 @@
         {
             "xGrid": 8,
             "yGrid": 3,
-            "blockType": 0,
+            "blockType": 1,
             "isGoal": false,
             "placedObjectName": ""
         },
         {
-            "xGrid": 9,
-            "yGrid": 2,
-            "blockType": 0,
-            "isGoal": false,
-            "placedObjectName": ""
-        },
-        {
-            "xGrid": 9,
-            "yGrid": 7,
-            "blockType": 0,
-            "isGoal": false,
-            "placedObjectName": ""
-        },
-        {
-            "xGrid": 10,
-            "yGrid": 2,
-            "blockType": 0,
-            "isGoal": false,
-            "placedObjectName": ""
-        },
-        {
-            "xGrid": 10,
-            "yGrid": 7,
-            "blockType": 0,
-            "isGoal": false,
-            "placedObjectName": ""
-        },
-        {
-            "xGrid": 11,
-            "yGrid": 2,
-            "blockType": 0,
-            "isGoal": false,
-            "placedObjectName": ""
-        },
-        {
-            "xGrid": 11,
-            "yGrid": 7,
-            "blockType": 0,
-            "isGoal": false,
-            "placedObjectName": ""
-        },
-        {
-            "xGrid": 12,
-            "yGrid": 2,
-            "blockType": 0,
-            "isGoal": false,
-            "placedObjectName": ""
-        },
-        {
-            "xGrid": 12,
-            "yGrid": 3,
-            "blockType": 0,
-            "isGoal": false,
-            "placedObjectName": ""
-        },
-        {
-            "xGrid": 12,
-            "yGrid": 6,
-            "blockType": 0,
-            "isGoal": false,
-            "placedObjectName": ""
-        },
-        {
-            "xGrid": 12,
-            "yGrid": 7,
-            "blockType": 0,
-            "isGoal": false,
-            "placedObjectName": ""
-        },
-        {
-            "xGrid": 13,
-            "yGrid": 3,
-            "blockType": 0,
-            "isGoal": false,
-            "placedObjectName": ""
-        },
-        {
-            "xGrid": 13,
+            "xGrid": 8,
             "yGrid": 4,
-            "blockType": 0,
+            "blockType": 1,
             "isGoal": false,
             "placedObjectName": ""
         },
         {
-            "xGrid": 13,
+            "xGrid": 8,
             "yGrid": 5,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 8,
+            "yGrid": 6,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 9,
+            "yGrid": 0,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 9,
+            "yGrid": 1,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 9,
+            "yGrid": 2,
             "blockType": 0,
             "isGoal": false,
             "placedObjectName": ""
         },
         {
-            "xGrid": 13,
+            "xGrid": 9,
+            "yGrid": 3,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 9,
+            "yGrid": 4,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 9,
+            "yGrid": 5,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 9,
             "yGrid": 6,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 10,
+            "yGrid": 0,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 10,
+            "yGrid": 1,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 10,
+            "yGrid": 2,
+            "blockType": 0,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 10,
+            "yGrid": 3,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 10,
+            "yGrid": 4,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 10,
+            "yGrid": 5,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 10,
+            "yGrid": 6,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 11,
+            "yGrid": 0,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 11,
+            "yGrid": 1,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 11,
+            "yGrid": 2,
+            "blockType": 0,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 11,
+            "yGrid": 4,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 11,
+            "yGrid": 5,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 11,
+            "yGrid": 6,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 11,
+            "yGrid": 7,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 12,
+            "yGrid": 0,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 12,
+            "yGrid": 1,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 12,
+            "yGrid": 2,
+            "blockType": 0,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 12,
+            "yGrid": 3,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 12,
+            "yGrid": 4,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 12,
+            "yGrid": 5,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 12,
+            "yGrid": 6,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 12,
+            "yGrid": 7,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 13,
+            "yGrid": 0,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 13,
+            "yGrid": 1,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 13,
+            "yGrid": 2,
+            "blockType": 0,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 14,
+            "yGrid": 0,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 14,
+            "yGrid": 1,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 14,
+            "yGrid": 2,
+            "blockType": 0,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 15,
+            "yGrid": 0,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 15,
+            "yGrid": 1,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 15,
+            "yGrid": 2,
+            "blockType": 0,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 16,
+            "yGrid": 0,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 16,
+            "yGrid": 1,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 16,
+            "yGrid": 2,
+            "blockType": 0,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 17,
+            "yGrid": 0,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 17,
+            "yGrid": 1,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 17,
+            "yGrid": 2,
+            "blockType": 0,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 18,
+            "yGrid": 0,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 18,
+            "yGrid": 1,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 18,
+            "yGrid": 2,
+            "blockType": 0,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 19,
+            "yGrid": 0,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 19,
+            "yGrid": 1,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 19,
+            "yGrid": 2,
+            "blockType": 0,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 20,
+            "yGrid": 0,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 20,
+            "yGrid": 1,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 20,
+            "yGrid": 2,
+            "blockType": 0,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 21,
+            "yGrid": 0,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 21,
+            "yGrid": 1,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 21,
+            "yGrid": 2,
+            "blockType": 0,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 21,
+            "yGrid": 4,
+            "blockType": -1,
+            "isGoal": false,
+            "placedObjectName": "Goal(Clone)"
+        },
+        {
+            "xGrid": 22,
+            "yGrid": 0,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 22,
+            "yGrid": 1,
+            "blockType": 1,
+            "isGoal": false,
+            "placedObjectName": ""
+        },
+        {
+            "xGrid": 22,
+            "yGrid": 2,
             "blockType": 0,
             "isGoal": false,
             "placedObjectName": ""

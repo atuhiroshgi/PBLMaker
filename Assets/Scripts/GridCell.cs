@@ -124,9 +124,9 @@ public class GridCell : Actor
     }
 
     /// <summary>
-    /// 現在のセルの上にあるセルを検索し、条件に基づいて更新する
+    /// 現在のセルの上と下にあるセルを検索し、条件に基づいて更新する
     /// </summary>
-    public void UpdateUpperCells()
+    public void UpdateUpperAndLowerCells()
     {
         // GridManagerを使用して現在のセルの上（Y座標が1つ大きいセル）を取得
         GridCell upperCell = GridManager.Instance.GetCellAtPosition(this.xGrid, this.yGrid + 1);
@@ -146,6 +146,22 @@ public class GridCell : Actor
         {
             // 下のセルのBlockTypeを1に設定
             lowerCell.SetBlockType(1);
+        }
+    }
+
+    /// <summary>
+    /// 消したときに下のセルを検索し、条件に基づいて更新する
+    /// </summary>
+    public void UpdateLowerCells()
+    {
+        // GridManagerを使用して現在のセルの下（Y座標が1つ小さいセル）を取得
+        GridCell lowerCell = GridManager.Instance.GetCellAtPosition(this.xGrid, this.yGrid - 1);
+
+        // 下のセルが存在し、BlockTypeが0である場合
+        if (lowerCell != null && lowerCell.GetBlockType() == 1)
+        {
+            // 下のセルのBlockTypeを1に設定
+            lowerCell.SetBlockType(0);
         }
     }
 

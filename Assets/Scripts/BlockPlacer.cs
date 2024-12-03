@@ -123,7 +123,7 @@ public class BlockPlacer : MonoBehaviour
             // blockTypeが0のとき、上下のセルを更新する
             if(blockType == 0)
             {
-                cell.UpdateUpperCells();
+                cell.UpdateUpperAndLowerCells();
             }
         }
     }
@@ -175,6 +175,7 @@ public class BlockPlacer : MonoBehaviour
 
             // ブロックタイプを設定
             cell.SetBlockType(-1);
+            cell.UpdateLowerCells();
             cell.gameObject.layer = LayerMask.NameToLayer("Grid");
             cell.gameObject.tag = "Grid";
 
