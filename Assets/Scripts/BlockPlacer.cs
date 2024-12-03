@@ -24,14 +24,8 @@ public class BlockPlacer : MonoBehaviour
     [SerializeField] private AudioClip deleteBlockSound;    // ブロック削除時の効果音
 
     private GameObject objectToPlace;
-    private AudioSource audioSource;
     private bool isEraserMode = false;
     private bool isGoalSettingMode = false;
-
-    private void Awake()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
 
     private async void Update()
     {
@@ -112,7 +106,7 @@ public class BlockPlacer : MonoBehaviour
             // ブロック配置時の効果音を再生
             if(cell.canPlaySEBlock(blockType) && placeBlockSound != null)
             {
-                audioSource.PlayOneShot(placeBlockSound);
+                SEManager.Instance.Play(placeBlockSound, 1, 1);
             }
 
             // ブロックタイプを設定
@@ -141,7 +135,7 @@ public class BlockPlacer : MonoBehaviour
             // オブジェクト配置時の効果音を再生
             if (cell.canPlaySEObject(objectToPlace) && placeObjectSound != null)
             {
-                audioSource.PlayOneShot(placeObjectSound);
+                SEManager.Instance.Play(placeObjectSound, 1, 1);
             }
 
             cell.SetPlacedObject(null);
@@ -171,7 +165,7 @@ public class BlockPlacer : MonoBehaviour
             // ブロック配置時の効果音を再生
             if (cell.canPlaySEBlock(-1) && placeBlockSound != null)
             {
-                audioSource.PlayOneShot(deleteBlockSound);
+                SEManager.Instance.Play(deleteBlockSound, 1, 1);
             }
 
             // ブロックタイプを設定
