@@ -138,7 +138,17 @@ public class GridCell : Actor
     /// <returns>ˆá‚¤‚È‚çtrue, “¯‚¶‚È‚çfalse</returns>
     public bool canPlaySEObject(GameObject placeObject)
     {
-        return placedObject != placeObject;
+        float currentTime = Time.time;
+        
+        if (currentTime - lastSoundTime > soundCooldown)
+        {
+            lastSoundTime = currentTime;
+            return this.placedObject != placeObject;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /// <summary>

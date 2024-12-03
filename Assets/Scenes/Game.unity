@@ -4117,7 +4117,7 @@ MonoBehaviour:
   blockerGameObjects:
   - {fileID: 7756057129233442581}
   placeBlockSound: {fileID: 8300000, guid: 031e5298ef1cf1c468af0a693cfbb3e2, type: 3}
-  placeObjectSound: {fileID: 8300000, guid: 5475547f6a1befc42920fdc6d6e70a25, type: 3}
+  placeObjectSound: {fileID: 8300000, guid: b89fb1f5942ad024ea063804c3d6ab7e, type: 3}
   deleteBlockSound: {fileID: 8300000, guid: 2697995d7d752d04ca3effc531ee42bc, type: 3}
 --- !u!4 &499130054
 Transform:

@@ -18,7 +18,7 @@ public class SEManager : AudioManager
     }
 
     private AudioSource[] audioSources;
-    private int maxSources = 10;
+    private int maxSources = 20;
 
     private void Awake()
     {

@@ -142,8 +142,6 @@ public class BlockPlacer : MonoBehaviour
             {
                 SEManager.Instance.Play(placeObjectSound, 1, 1);
             }
-
-            cell.SetPlacedObject(null);
             cell.SetPlacedObject(objectToPlace);
 
         }
