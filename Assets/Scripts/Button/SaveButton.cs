@@ -14,12 +14,12 @@ public class SaveButton : Button
     {
         base.OnClick();
 
-        gridManager.ReloadGridCells();
 
         if(confilmationDialog != null)
         {
             confilmationDialog.Show(() =>
             {
+                gridManager.ReloadGridCells();
                 gridManager.SaveGridData(SAVE_FILEPATH);
                 Debug.Log("データをセーブしました");
             });

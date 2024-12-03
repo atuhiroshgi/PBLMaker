@@ -6,6 +6,8 @@ public class LoadButton : Button
 
     [SerializeField, Header("GridManagerの参照")]
     private GridManager gridManager;
+    [SerializeField, Header("ResetButtonの参照")]
+    private ResetButton resetButton;
     [SerializeField, Header("確認ダイアログの参照")]
     private ConfilmationDialog confilmationDialog;
 
@@ -13,12 +15,12 @@ public class LoadButton : Button
     {
         base.OnClick();
 
-        gridManager.ReloadGridCells();
 
         if (confilmationDialog != null)
         {
             confilmationDialog.Show(() =>
             {
+                gridManager.ReloadGridCells();
                 gridManager.LoadGridData(LOAD_FILEPATH);
                 Debug.Log("データをロードしました");
             });

@@ -54,7 +54,7 @@ public class ResetButton : Button
     /// <summary>
     /// 作られたマップを全て消して再生成する
     /// </summary>
-    private void ResetGridCell()
+    public void ResetGridCell()
     {
         gridGenerator.ClearAllGridCells();
         gridGenerator.GenerateGrid();
