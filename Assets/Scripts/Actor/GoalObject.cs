@@ -9,7 +9,7 @@ public class GoalObject : Actor
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && ExecuteManager.Instance.GetIsExecute())
         {
             // プレイヤーのスクリプトに目標地点を設定する
             Player player = collision.GetComponent<Player>();

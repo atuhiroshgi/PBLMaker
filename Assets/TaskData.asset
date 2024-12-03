@@ -309,3 +309,10 @@ MonoBehaviour:
     IsHidden: 0
     Priority: 2
     Difficulty: 2
+  - Title: "Player\u306E\u6319\u52D5"
+    Description: "Player\u306Ex\u5EA7\u6A19\u304C60\u3092\u8D85\u3048\u305F\u3068\u304D\u3001\u30AB\u30E1\u30E9\u304C\u8FFD\u5F93\u3092\u3084\u3081\u3066Player\u306Ex\u5EA7\u6A19\u304C0\u306B\u306A\u308B"
+    Category: "\u30D0\u30B0\u4FEE\u6B63"
+    IsCompleted: 0
+    IsHidden: 0
+    Priority: 2
+    Difficulty: 2

@@ -4441,9 +4441,9 @@ MonoBehaviour:
   yOffsetThreshold: 1.5
   cameraSpeed: 30
   minX: 0
-  maxX: 70
+  maxX: 95
   minY: 0
-  maxY: 20
+  maxY: 50
 --- !u!1 &525529457
 GameObject:
   m_ObjectHideFlags: 0
