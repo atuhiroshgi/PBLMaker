@@ -97,15 +97,18 @@ public class TaskManagerWindow : EditorWindow
     {
         GUILayout.Label("タスクリスト", EditorStyles.boldLabel);
 
-        EditorGUILayout.BeginHorizontal();
-        GUILayout.Label("タイトル", GUILayout.Width(150));
-        GUILayout.Label("カテゴリー", GUILayout.Width(100));
-        GUILayout.Label("優先度", GUILayout.Width(60));
-        GUILayout.Label("難易度", GUILayout.Width(80));
-        GUILayout.Label("操作", GUILayout.Width(120));
+        // ヘッダーの作成
+        EditorGUILayout.BeginHorizontal(EditorStyles.toolbar);
+        GUILayout.Label("タイトル", EditorStyles.boldLabel, GUILayout.Width(200));
+        GUILayout.Label("カテゴリー", EditorStyles.boldLabel, GUILayout.Width(150));
+        GUILayout.Label("優先度", EditorStyles.boldLabel, GUILayout.Width(80));
+        GUILayout.Label("難易度", EditorStyles.boldLabel, GUILayout.Width(100));
+        GUILayout.FlexibleSpace(); // スペースを追加して調整
+        GUILayout.Label("操作", EditorStyles.boldLabel, GUILayout.Width(150));
         EditorGUILayout.EndHorizontal();
 
-        scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
+        // スクロールビューの開始
+        scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition, GUILayout.ExpandHeight(true));
 
         var filteredTasks = GetFilteredAndSortedTasks();
 
@@ -114,20 +117,21 @@ public class TaskManagerWindow : EditorWindow
             if (task == null || taskData == null) continue; // 不正なデータを除外
 
             EditorGUILayout.BeginHorizontal();
-            GUILayout.Label(task.Title, GUILayout.Width(150));
-            GUILayout.Label(task.Category, GUILayout.Width(100));
-            GUILayout.Label(task.Priority.ToString(), GUILayout.Width(60));
-            GUILayout.Label(task.Difficulty.ToString(), GUILayout.Width(80));
+            GUILayout.Label(task.Title, GUILayout.Width(200));
+            GUILayout.Label(task.Category, GUILayout.Width(150));
+            GUILayout.Label(task.Priority.ToString(), GUILayout.Width(80));
+            GUILayout.Label(task.Difficulty.ToString(), GUILayout.Width(100));
+            GUILayout.FlexibleSpace(); // スペースを追加して調整
 
-            if (GUILayout.Button("選択", GUILayout.Width(60)))
+            if (GUILayout.Button("選択", GUILayout.Width(70)))
             {
                 selectedTask = task;
             }
 
-            if (GUILayout.Button("削除", GUILayout.Width(60)))
+            if (GUILayout.Button("削除", GUILayout.Width(70)))
             {
                 RemoveTask(task);
-                break;
+                break; // リスト変更後は再描画が必要
             }
 
             EditorGUILayout.EndHorizontal();
@@ -135,6 +139,7 @@ public class TaskManagerWindow : EditorWindow
 
         EditorGUILayout.EndScrollView();
     }
+
 
     private void DrawSelectedTaskDetails()
     {

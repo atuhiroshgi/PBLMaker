@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 642139155873658589, guid: 390342d8bce21714e8a868e934b4033d, type: 3}
   blockSprite: {fileID: -7980411711189366179, guid: 18001b822e5657042a8c64f2ac3b0c64, type: 3}
-  blockType: 37
+  blockType: 0
   isBlock: 0

@@ -2,13 +2,32 @@ using System.IO;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEditor;
+using System.Linq;
 
 public class GridManager : MonoBehaviour
 {
+    private static readonly string INITIALSTAGE_FILE_PATH = "initialGridData.json";
+
     [HideInInspector]
     public GridCell[,] gridCells;    // シーン内に配置されているセルを取得してセット
 
     private GridGenerator gridGenerator;
+    private float maxTimeDifference = 0.2f; // 同時押しとみなす最大時間差
+    private bool saveLogTriggered = false;  // 保存用フラグ
+    private bool loadLogTriggered = false;  // 読み込み用フラグ
+
+    // キーとタイムスタンプを保持
+    private Dictionary<KeyCode, float> saveKeyPressTimes = new Dictionary<KeyCode, float>
+    {
+        { KeyCode.I, -1 },
+        { KeyCode.P, -1 }
+    };
+    private Dictionary<KeyCode, float> loadKeyPressTimes = new Dictionary<KeyCode, float>
+    {
+        { KeyCode.O, -1 },
+        { KeyCode.P, -1 }
+    };
+
 
     private void Start()
     {
@@ -23,6 +42,70 @@ public class GridManager : MonoBehaviour
         {
             Debug.LogError("GridGeneratorが見つかりません！");
         }
+    }
+
+
+    void Update()
+    {
+        // 保存操作用のキーのチェック
+        UpdateKeyPressTimes(saveKeyPressTimes);
+
+        // 読み込み操作用のキーのチェック
+        UpdateKeyPressTimes(loadKeyPressTimes);
+
+        // I + P の同時押しで保存
+        if (AreKeysPressedSimultaneously(saveKeyPressTimes) && !saveLogTriggered)
+        {
+            SaveGridData(INITIALSTAGE_FILE_PATH);
+            saveLogTriggered = true;
+        }
+        else if (!AreKeysPressedSimultaneously(saveKeyPressTimes))
+        {
+            saveLogTriggered = false; // 条件が解除されたらフラグをリセット
+        }
+
+        // O + P の同時押しで読み込み
+        if (AreKeysPressedSimultaneously(loadKeyPressTimes) && !loadLogTriggered)
+        {
+            LoadGridData(INITIALSTAGE_FILE_PATH);
+            loadLogTriggered = true;
+        }
+        else if (!AreKeysPressedSimultaneously(loadKeyPressTimes))
+        {
+            loadLogTriggered = false; // 条件が解除されたらフラグをリセット
+        }
+    }
+
+    private void UpdateKeyPressTimes(Dictionary<KeyCode, float> keyPressTimes)
+    {
+        var keys = keyPressTimes.Keys.ToList();
+
+        foreach (var key in keys)
+        {
+            if (Input.GetKeyDown(key))
+            {
+                keyPressTimes[key] = Time.time;
+            }
+        }
+    }
+
+    private bool AreKeysPressedSimultaneously(Dictionary<KeyCode, float> keyPressTimes)
+    {
+        float firstPressTime = -1;
+        foreach (var keyTime in keyPressTimes.Values)
+        {
+            if (keyTime < 0) return false; // 押されていないキーがある場合は失敗
+
+            if (firstPressTime < 0)
+            {
+                firstPressTime = keyTime;
+            }
+            else if (Mathf.Abs(firstPressTime - keyTime) > maxTimeDifference)
+            {
+                return false; // 時間差が大きすぎる場合は失敗
+            }
+        }
+        return true;
     }
 
     public void ReloadGridCells()

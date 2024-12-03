@@ -75,7 +75,7 @@ public class PaletteController : MonoBehaviour
                 paletteIcons[i].enabled = false;
             }
         }
-        
+
         // 選ばれているのがブロックかどうかで処理を変更
         if (selectedIsBlock)
         {
