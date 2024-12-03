@@ -6,6 +6,33 @@ using System.Linq;
 
 public class GridManager : MonoBehaviour
 {
+    public static GridManager instance;
+    public static GridManager Instance
+    {
+        get
+        {
+            if(instance == null)
+            {
+                GameObject go = new GameObject();
+                go.name = "GridManager";
+                instance = go.AddComponent<GridManager>();
+            }
+            return instance;
+        }
+    }
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else if (!ReferenceEquals(instance, this)) // éQè∆î‰ärÇégóp
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private static readonly string INITIALSTAGE_FILE_PATH = "initialGridData.json";
 
     [HideInInspector]
@@ -197,7 +224,7 @@ public class GridManager : MonoBehaviour
         }
     }
 
-    private GridCell GetCellAtPosition(int x, int y)
+    public GridCell GetCellAtPosition(int x, int y)
     {
         if (gridCells == null)
         {

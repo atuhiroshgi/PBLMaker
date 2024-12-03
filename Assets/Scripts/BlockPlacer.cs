@@ -120,6 +120,11 @@ public class BlockPlacer : MonoBehaviour
                 cell.gameObject.tag = "Ground";
             }
 
+            // blockTypeが0のとき、上下のセルを更新する
+            if(blockType == 0)
+            {
+                cell.UpdateUpperCells();
+            }
         }
     }
 

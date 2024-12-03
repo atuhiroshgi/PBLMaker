@@ -124,6 +124,33 @@ public class GridCell : Actor
     }
 
     /// <summary>
+    /// 現在のセルの上にあるセルを検索し、条件に基づいて更新する
+    /// </summary>
+    public void UpdateUpperCells()
+    {
+        // GridManagerを使用して現在のセルの上（Y座標が1つ大きいセル）を取得
+        GridCell upperCell = GridManager.Instance.GetCellAtPosition(this.xGrid, this.yGrid + 1);
+
+        // 上のセルが存在し、BlockTypeが0である場合
+        if (upperCell != null && (upperCell.GetBlockType() == 0 || upperCell.GetBlockType() == 1))
+        {
+            // 上のセルのBlockTypeが0なら、現在のセルのBlockTypeを1に設定
+            SetBlockType(1);
+        }
+
+        // GridManagerを使用して現在のセルの下（Y座標が1つ小さいセル）を取得
+        GridCell lowerCell = GridManager.Instance.GetCellAtPosition(this.xGrid, this.yGrid - 1);
+
+        // 下のセルが存在し、BlockTypeが0である場合
+        if (lowerCell != null && lowerCell.GetBlockType() == 0)
+        {
+            // 下のセルのBlockTypeを1に設定
+            lowerCell.SetBlockType(1);
+        }
+    }
+
+
+    /// <summary>
     /// ゴールに設定されているかのセッター
     /// </summary>
     /// <param name="isGoal">ゴールに設定されているか</param>
