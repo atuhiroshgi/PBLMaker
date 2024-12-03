@@ -81,18 +81,9 @@ public class TaskManagerWindow : EditorWindow
     {
         GUILayout.Label("フィルタ", EditorStyles.boldLabel);
         string[] filterOptions = new[] { "すべて" }.Concat(categories).ToArray();
-
-        // 非保存オブジェクトを除外
-        filterOptions = filterOptions.Where(category => !IsCategoryDontSave(category)).ToArray();
-
         int selectedFilterIndex = Array.IndexOf(filterOptions, filterCategory);
         selectedFilterIndex = EditorGUILayout.Popup("カテゴリー", selectedFilterIndex, filterOptions);
         filterCategory = filterOptions[Mathf.Clamp(selectedFilterIndex, 0, filterOptions.Length - 1)];
-    }
-
-    private bool IsCategoryDontSave(string category)
-    {
-        return taskData.Tasks.Any(task => task.Category == category && task.IsHidden);
     }
 
     private void DrawSortSection()
@@ -120,6 +111,8 @@ public class TaskManagerWindow : EditorWindow
 
         foreach (var task in filteredTasks)
         {
+            if (task == null || taskData == null) continue; // 不正なデータを除外
+
             EditorGUILayout.BeginHorizontal();
             GUILayout.Label(task.Title, GUILayout.Width(150));
             GUILayout.Label(task.Category, GUILayout.Width(100));
@@ -180,16 +173,24 @@ public class TaskManagerWindow : EditorWindow
         newTaskDescription = "";
 
         EditorUtility.SetDirty(taskData);
+        AssetDatabase.SaveAssets(); // データを確実に保存
     }
 
     private void RemoveTask(Task task)
     {
-        taskData.Tasks.Remove(task);
-        EditorUtility.SetDirty(taskData);
+        if (taskData.Tasks.Contains(task))
+        {
+            taskData.Tasks.Remove(task);
+            EditorUtility.SetDirty(taskData);
+            AssetDatabase.SaveAssets(); // 削除後にデータを保存
+        }
     }
 
     private System.Collections.Generic.List<Task> GetFilteredAndSortedTasks()
     {
+        if (taskData == null || taskData.Tasks == null)
+            return new System.Collections.Generic.List<Task>();
+
         var filteredTasks = filterCategory == "すべて"
             ? taskData.Tasks
             : taskData.Tasks.Where(task => task.Category == filterCategory).ToList();
