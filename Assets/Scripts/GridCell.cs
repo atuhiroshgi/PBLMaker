@@ -22,7 +22,10 @@ public class GridCell : Actor
     private Collider2D col;
     private GameObject placedObject;        // このセルの上に存在するオブジェクトを格納するためのメンバ
     private SpriteRenderer spriteRenderer;  // このセルの見た目を変更するため
+    private float soundCooldown = 0.15f;
+    private float lastSoundTime = 0f;
     private bool isGoal = false;
+    private bool isChange = false;
 
     private async void Awake()
     {
@@ -70,7 +73,22 @@ public class GridCell : Actor
     /// <returns>違うならtrue, 同じならfalse</returns>
     public bool canPlaySEBlock(int blockType)
     {
-        return this.blockType != blockType;
+        float currentTime = Time.time;
+        if(blockType == 0 && this.blockType == 1)
+        {
+            return false;
+        }
+
+        if(currentTime - lastSoundTime > soundCooldown)
+        {
+            lastSoundTime = currentTime;
+            return this.blockType != blockType;
+        }
+        else
+        {
+            return false;
+        }
+
     }
 
     /// <summary>

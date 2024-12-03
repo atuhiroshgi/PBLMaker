@@ -40,6 +40,9 @@ public class GridManager : MonoBehaviour
     [HideInInspector]
     public GridCell[,] gridCells;    // シーン内に配置されているセルを取得してセット
 
+    [SerializeField, Header("ResetButtonの参照")]
+    private ResetButton resetButton;
+
     private GridGenerator gridGenerator;
     private float maxTimeDifference = 0.2f; // 同時押しとみなす最大時間差
     private bool saveLogTriggered = false;  // 保存用フラグ
@@ -98,6 +101,7 @@ public class GridManager : MonoBehaviour
         // O + P の同時押しで読み込み
         if (AreKeysPressedSimultaneously(loadKeyPressTimes) && !loadLogTriggered)
         {
+            resetButton.ResetGridCell();
             LoadGridData(INITIALSTAGE_FILE_PATH);
             loadLogTriggered = true;
             Debug.Log("初期ステージを出力しました");

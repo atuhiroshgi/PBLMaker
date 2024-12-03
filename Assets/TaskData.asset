@@ -302,10 +302,3 @@ MonoBehaviour:
     IsHidden: 0
     Priority: 2
     Difficulty: 2
-  - Title: "\u5730\u9762\u30D6\u30ED\u30C3\u30AF\u3092\u7F6E\u3044\u305F\u6642\u306E\u8A2D\u7F6E\u97F3"
-    Description: "\u4E0A\u90E8\u306B\u5730\u9762\u30D6\u30ED\u30C3\u30AF\u304C\u3042\u308B\u3068\u304D\u306BblockType\u3092\u5207\u308A\u66FF\u3048\u308B\u95A2\u4FC2\u4E0A\u97F3\u304C\u30D0\u30B0\u308B"
-    Category: "\u30D0\u30B0\u4FEE\u6B63"
-    IsCompleted: 0
-    IsHidden: 0
-    Priority: 2
-    Difficulty: 2
