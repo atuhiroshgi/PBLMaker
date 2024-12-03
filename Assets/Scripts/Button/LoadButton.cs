@@ -20,7 +20,6 @@ public class LoadButton : Button
         {
             confilmationDialog.Show(() =>
             {
-                gridManager.ReloadGridCells();
                 gridManager.LoadGridData(LOAD_FILEPATH);
                 Debug.Log("データをロードしました");
             });

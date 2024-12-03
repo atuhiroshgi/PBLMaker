@@ -58,5 +58,6 @@ public class ResetButton : Button
     {
         gridGenerator.ClearAllGridCells();
         gridGenerator.GenerateGrid();
+        GridManager.Instance.ReloadGridCells();
     }
 }

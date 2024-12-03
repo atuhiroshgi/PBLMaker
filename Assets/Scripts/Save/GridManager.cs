@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEditor;
 using System.Linq;
 
+
+
 public class GridManager : MonoBehaviour
 {
     public static GridManager instance;
@@ -64,6 +66,7 @@ public class GridManager : MonoBehaviour
         {
             gridCells = gridGenerator.GetGridCells();
             Debug.Log($"gridCells が初期化されました: {gridCells != null}");
+            LoadGridData(INITIALSTAGE_FILE_PATH);
         }
         else
         {
@@ -85,8 +88,9 @@ public class GridManager : MonoBehaviour
         {
             SaveGridData(INITIALSTAGE_FILE_PATH);
             saveLogTriggered = true;
+            Debug.Log("初期ステージを保存しました");
         }
-        else if (!AreKeysPressedSimultaneously(saveKeyPressTimes))
+        if (!AreKeysPressedSimultaneously(saveKeyPressTimes))
         {
             saveLogTriggered = false; // 条件が解除されたらフラグをリセット
         }
@@ -96,8 +100,9 @@ public class GridManager : MonoBehaviour
         {
             LoadGridData(INITIALSTAGE_FILE_PATH);
             loadLogTriggered = true;
+            Debug.Log("初期ステージを出力しました");
         }
-        else if (!AreKeysPressedSimultaneously(loadKeyPressTimes))
+        if (!AreKeysPressedSimultaneously(loadKeyPressTimes))
         {
             loadLogTriggered = false; // 条件が解除されたらフラグをリセット
         }
@@ -142,6 +147,11 @@ public class GridManager : MonoBehaviour
 
     public void SaveGridData(string filePath)
     {
+        if(gridCells == null)
+        {
+            ReloadGridCells();
+        }
+
         GridData gridData = new GridData();
 
         // gridCells を二重ループで回す
@@ -187,6 +197,10 @@ public class GridManager : MonoBehaviour
         {
             Debug.LogError("ファイルが見つかりません!");
             return;
+        }
+        if (gridCells == null)
+        {
+            ReloadGridCells();
         }
 
         string json = File.ReadAllText(filePath);

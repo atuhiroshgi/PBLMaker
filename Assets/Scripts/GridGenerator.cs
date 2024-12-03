@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class GridGenerator : MonoBehaviour
 {
+    private static readonly string INITIALSTAGE_FILE_PATH = "initialGridData.json";
+
     [SerializeField, Header("配置するGridCellのプレハブ")]
     private GameObject gridCellPrefab;
 
@@ -15,12 +17,12 @@ public class GridGenerator : MonoBehaviour
     private float cellSpacing = 1.28f;
 
     private GridCell[,] gridCells;  // 各セルの参照を保持する2次元配列
-
+    private GridManager gridManager;
 
     /// <summary>
     /// グリッドを生成するメソッド
     /// </summary>
-    private void Start()
+    private void Awake()
     {
         GenerateGrid();
     }

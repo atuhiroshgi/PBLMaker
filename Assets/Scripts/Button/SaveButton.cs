@@ -19,7 +19,6 @@ public class SaveButton : Button
         {
             confilmationDialog.Show(() =>
             {
-                gridManager.ReloadGridCells();
                 gridManager.SaveGridData(SAVE_FILEPATH);
                 Debug.Log("データをセーブしました");
             });
