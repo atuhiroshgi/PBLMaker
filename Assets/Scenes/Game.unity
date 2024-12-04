@@ -1857,7 +1857,7 @@ MonoBehaviour:
   - {fileID: 1206599150}
   - {fileID: 658234679}
   - {fileID: 1139635671}
-  countDownTime: 10
+  countDownTime: 200
 --- !u!114 &256429989
 MonoBehaviour:
   m_ObjectHideFlags: 0

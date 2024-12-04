@@ -1,7 +1,10 @@
+using Cysharp.Threading.Tasks.Triggers;
 using UnityEngine;
 
 public class Enemy : Character
 {
+    [SerializeField, Header("スコア表示用のPrefab")]
+    private GameObject scorePopupPrefab;
     [SerializeField, Header("体力")]
     protected int health = 1;
     [SerializeField, Header("倒したときに得られるスコア")]
@@ -17,6 +20,7 @@ public class Enemy : Character
     protected bool isSaved = false;             // 初期位置を保存しているかどうかのフラグ
     protected bool isResetPosition = false;     // ポジションをリセットしたかどうか
     private bool hasColliderAssigned = false;   // 実行時に当たり判定を加えたかどうかのフラグ
+    private float scorePopupDuration = 0.5f;
 
     protected override void Awake()
     {
@@ -108,6 +112,23 @@ public class Enemy : Character
         spriteRenderer.enabled = false;
         col.isTrigger = true;
         ScoreCounter.Instance.SetScore(score);
+        ShowScorePopup();
+    }
+
+    private void ShowScorePopup()
+    {
+        if(scorePopupPrefab != null)
+        {
+            // スコア表示を敵の位置に生成
+            GameObject popup = Instantiate(scorePopupPrefab, transform.position, Quaternion.identity);
+
+            // スコア表示オブジェクトにスコアと持続時間を渡す
+            ScorePopup popupScript = popup.GetComponent<ScorePopup>();
+            if(popupScript != null)
+            {
+                popupScript.Initialize(score, scorePopupDuration);
+            }
+        }
     }
 
     /// <summary>

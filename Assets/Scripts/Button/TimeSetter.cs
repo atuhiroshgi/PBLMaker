@@ -22,7 +22,7 @@ public class TimeSetter : Button
     [SerializeField, Header("選択候補のテキスト")]
     private TextMeshProUGUI[] optionsText;
     [SerializeField, Header("カウントダウン時間(秒)")]
-    private int countDownTime = 10;
+    private int countDownTime = 200;
 
     private float remainingTime;
     private int selectedIndex;

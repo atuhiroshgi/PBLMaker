@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4d4a62a2252f124ba488de4ff9a27b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scorePopupPrefab: {fileID: 3650201761782887447, guid: 8df1eeadb22fe9f45866042899c89fd3, type: 3}
   health: 1
   score: 100
   invincible: 0
