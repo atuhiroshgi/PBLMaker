@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8cef3e1405717e4eb9315043f8a8006, type: 3}
-  m_Name: Enemy0
+  m_Name: Enemy1
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2426697659337615279, guid: 005aaaa07b9a8674daf3d5d4131b0e89, type: 3}
-  blockSprite: {fileID: 7017444947658148514, guid: 7cac1264aa0482549acdd7479aa6e7e2, type: 3}
-  blockType: 0
+  prefab: {fileID: 1767965071530641212, guid: 4d353d09c40d309419891994d8cc7bc7, type: 3}
+  blockSprite: {fileID: -5814038973165603397, guid: e78ef4f3064a39540b362178b814d7f5, type: 3}
+  blockType: 1
   isBlock: 0

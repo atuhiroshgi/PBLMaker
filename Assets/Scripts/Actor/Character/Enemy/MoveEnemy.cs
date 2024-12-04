@@ -21,7 +21,6 @@ public class MoveEnemy : Enemy
     protected override void Update()
     {
         base.Update();
-
     }
 
     protected override void Ground()

@@ -2,21 +2,37 @@ using UnityEngine;
 
 public class GoalObject : Actor
 {
+    private Collider2D col;
+    private SpriteRenderer sr;
+    private bool isPlayerTouched = false;
+
     private void Awake()
     {
+        col = GetComponent<Collider2D>();
+        sr = GetComponent<SpriteRenderer>();
         AddGoal();
+    }
+
+    private void Update()
+    {
+        // 実行が止まっている場合表示させる
+        if (!ExecuteManager.Instance.GetIsExecute())
+        {
+            sr.enabled = true;
+            isPlayerTouched = false;
+        }
+        else
+        {
+            sr.enabled = !isPlayerTouched;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && ExecuteManager.Instance.GetIsExecute())
         {
-            // プレイヤーのスクリプトに目標地点を設定する
-            Player player = collision.GetComponent<Player>();
-            if(player != null)
-            {
-                player.FaceTarget(transform.position);
-            }
+            sr.enabled = false;
+            isPlayerTouched = true;
         }
     }
 }
