@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  score: 100
   invincible: 0
   wallCheck: {fileID: 8218710405279391548}
   speed: 5

@@ -34,13 +34,6 @@ MonoBehaviour:
     IsHidden: 0
     Priority: 0
     Difficulty: 1
-  - Title: "\u7A7A\u3092\u98DB\u3076\u6575"
-    Description: "\u30DE\u30EA\u30AA\u306E\u30AD\u30E9\u30FC\u7684\u306B\u7A7A\u3092\u98DB\u3076\u6575"
-    Category: "\u6A5F\u80FD\u5B9F\u88C5"
-    IsCompleted: 0
-    IsHidden: 0
-    Priority: 0
-    Difficulty: 2
   - Title: "\u30B3\u30A4\u30F3"
     Description: "\u89E6\u308C\u305F\u3089\u53D6\u308C\u308B\u30B3\u30A4\u30F3, UI\u3082\u542B\u3081\u3066"
     Category: "\u6A5F\u80FD\u5B9F\u88C5"

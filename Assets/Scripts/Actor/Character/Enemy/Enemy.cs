@@ -4,6 +4,8 @@ public class Enemy : Character
 {
     [SerializeField, Header("‘Ì—Í")]
     protected int health = 1;
+    [SerializeField, Header("“|‚µ‚½‚Æ‚«‚É“¾‚ç‚ê‚éƒXƒRƒA")]
+    protected int score;
     [SerializeField, Header("–³“G‚©‚Ç‚¤‚©")]
     protected bool invincible = false;
 
@@ -105,6 +107,7 @@ public class Enemy : Character
         Debug.Log("“G“|‚µ‚½");
         spriteRenderer.enabled = false;
         col.isTrigger = true;
+        ScoreCounter.Instance.SetScore(score);
     }
 
     /// <summary>
