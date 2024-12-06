@@ -38,6 +38,7 @@ public class Player : Character
     private float fallGravityScale = 2f;
 
     private Camera mainCamera;
+    private Animator animator;
     private float lastDirection = 1;        // 最後の移動方向を保持(1は右向き, -1は左向き)
     private float playerSpeed;              // プレイヤーのスピードを格納するため
     private bool isGround = false;          // 地面に触れているかどうか
@@ -50,6 +51,8 @@ public class Player : Character
     {
         base.Awake();
         mainCamera = Camera.main;
+        isFacingLeft = false;
+        animator = GetComponent<Animator>();
         messageText.gameObject.SetActive(false);
     }
 
@@ -61,10 +64,13 @@ public class Player : Character
             // 実行中だけ操作可能
             Jump();
             CheckPlayerY();
+            UpdateAnimationParameters();
         }
         else
         {
+            SetFacingRight();
             DisableOperation();
+            ResetAnimationParameters();
         }
 
         ForDebug();
@@ -91,7 +97,7 @@ public class Player : Character
         // プレイヤーが移動している場合、方向を更新
         if(moveInput != 0)
         {
-            lastDirection = Mathf.Sign(lastDirection);
+            lastDirection = Mathf.Sign(moveInput);
 
             //最後の移動方向に基づいてキャラクターを左右反転
             Vector3 scale = transform.localScale;
@@ -150,6 +156,27 @@ public class Player : Character
             isDead = true;
             ShowMessage(FAILED_MESSAGE);
         }
+    }
+
+    private void UpdateAnimationParameters()
+    {
+        // プレイヤーの移動速度を反映させる
+        float speed = Mathf.Abs(rb.linearVelocity.x);
+        animator.SetFloat("Speed", Mathf.Max(speed, 0f));
+
+        // ジャンプ状態を反映させる
+        bool isJumping = !isGround;
+        animator.SetBool("IsJumping", isJumping);
+
+        bool isFalling = rb.linearVelocity.y < 0 && !isGround;
+        animator.SetBool("IsFalling", isFalling);
+    }
+
+    private void ResetAnimationParameters()
+    {
+        animator.SetFloat("Speed", 0);
+        animator.SetBool("IsJumping", false);
+        animator.SetBool("IsFalling", false);
     }
 
     /// <summary>

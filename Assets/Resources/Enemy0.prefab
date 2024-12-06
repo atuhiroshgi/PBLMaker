@@ -470,4 +470,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallLayer:
     serializedVersion: 2
-    m_Bits: 448
+    m_Bits: 320
