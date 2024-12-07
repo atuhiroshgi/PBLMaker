@@ -18813,6 +18813,9 @@ MonoBehaviour:
   defaultGravityScale: 1
   jumpGravityScale: 1
   fallGravityScale: 2
+  xMin: -14
+  xMax: 105
+  yMin: -12
 --- !u!50 &8340509793872120007
 Rigidbody2D:
   serializedVersion: 5

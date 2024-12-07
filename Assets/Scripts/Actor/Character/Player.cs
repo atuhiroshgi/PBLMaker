@@ -13,8 +13,7 @@ public class Player : Character
     private static readonly string CLEAR_MESSAGE = "CLEAR!!";           // ミスしたときに表示するメッセージ
     private static readonly string FAILED_MESSAGE = "FAILED!!";         // ミスしたときに表示するメッセージ
     private static readonly float CLEAR_COOLTIME = 2f;                  // クリアした後のクールタイム
-    private static readonly float DEAD_LINE = -11f;                      // 死ぬライン
-
+    
 
     [SerializeField, Header("CameraControllerを参照")]
     private CameraController cameraController;
@@ -36,6 +35,12 @@ public class Player : Character
     private float jumpGravityScale = 0.5f;
     [SerializeField, Header("落下中の重力スケール")]
     private float fallGravityScale = 2f;
+    [SerializeField, Header("x座標の最小値")]
+    private float xMin = -14f;
+    [SerializeField, Header("x座標の最大値")]
+    private float xMax;
+    [SerializeField, Header("y座標の最小値")]
+    private float yMin = -12f;
 
     private Camera mainCamera;
     private Animator animator;
@@ -63,6 +68,7 @@ public class Player : Character
             if (isClear || isDead) return;      //クリア済みor死んでいたら操作を無効化
             // 実行中だけ操作可能
             Jump();
+            CheckPlayerX();
             CheckPlayerY();
             UpdateAnimationParameters();
         }
@@ -129,6 +135,12 @@ public class Player : Character
         }
     }
 
+    public void Bounce(float bounceForce)
+    {
+        // Y方向の速度をリセットして上向きの力を加える
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, bounceForce);
+    }
+
     /// <summary>
     /// 設置しているかどうか
     /// </summary>
@@ -149,9 +161,25 @@ public class Player : Character
             defaultGravityScale;
     }
 
+    private void CheckPlayerX()
+    {
+        Vector3 correctedPosition = transform.position;
+
+        if(transform.position.x < xMin)
+        {
+            correctedPosition.x = xMin;
+            transform.position = correctedPosition;
+        }
+        if(transform.position.x > xMax)
+        {
+            correctedPosition.x = xMax;
+            transform.position = correctedPosition;
+        }
+    }
+
     private void CheckPlayerY()
     {
-        if(transform.position.y < DEAD_LINE)
+        if(transform.position.y < yMin)
         {
             isDead = true;
             ShowMessage(FAILED_MESSAGE);
