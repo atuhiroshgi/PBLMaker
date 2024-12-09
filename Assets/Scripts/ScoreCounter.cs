@@ -67,7 +67,7 @@ public class ScoreCounter : MonoBehaviour
         scoreText.text = this.score.ToString("D7");
     }
 
-    public void SetScore(int score)
+    public void AddScore(int score)
     {
         this.score += score;
         UpdateText();

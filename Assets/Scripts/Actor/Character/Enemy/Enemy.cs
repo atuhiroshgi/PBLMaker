@@ -111,7 +111,7 @@ public class Enemy : Character
         Debug.Log("“G“|‚µ‚½");
         spriteRenderer.enabled = false;
         col.isTrigger = true;
-        ScoreCounter.Instance.SetScore(score);
+        ScoreCounter.Instance.AddScore(score);
         ShowScorePopup();
     }
 

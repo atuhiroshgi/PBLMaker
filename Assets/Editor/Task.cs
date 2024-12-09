@@ -6,7 +6,6 @@ public class Task
     public string Title;
     public string Description;
     public string Category;
-    public bool IsCompleted;
     public bool IsHidden;
     public PriorityLevel Priority;
     public DifficultyLevel Difficulty;  // 難易度プロパティを追加

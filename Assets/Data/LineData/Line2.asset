@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockData:
   - {fileID: 11400000, guid: 8e44fed26cb04dd4ab2f86bddff1e7ee, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: bea1aa5439ca5ac4a8fec61034e865e0, type: 2}
+  - {fileID: 11400000, guid: b0442c470799ac045b392e8530efc28f, type: 2}
+  - {fileID: 11400000, guid: b51427e99a7715a4eb4084f7e9da1da1, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
