@@ -12,15 +12,15 @@ public class Enemy : Character
     [SerializeField, Header("無敵かどうか")]
     protected bool invincible = false;
 
-
     protected Player player;
     protected GroundCheck groundCheck;
-
     protected Vector3 initialPosition;          // 初期位置を把握するための
     protected bool isSaved = false;             // 初期位置を保存しているかどうかのフラグ
     protected bool isResetPosition = false;     // ポジションをリセットしたかどうか
-    private bool hasColliderAssigned = false;   // 実行時に当たり判定を加えたかどうかのフラグ
+    protected bool isScored = false;
+
     private float scorePopupDuration = 0.5f;
+    private bool hasColliderAssigned = false;   // 実行時に当たり判定を加えたかどうかのフラグ
 
     protected override void Awake()
     {
@@ -62,6 +62,7 @@ public class Enemy : Character
 
             isSaved = false;
             isDead = false;
+            isScored = false;
             spriteRenderer.enabled = true;
 
             if (!isResetPosition)
@@ -108,9 +109,12 @@ public class Enemy : Character
 
     protected override void Death()
     {
+        if (isScored) return;
+
         Debug.Log("敵倒した");
         spriteRenderer.enabled = false;
         col.isTrigger = true;
+        isScored = true;
         ScoreCounter.Instance.AddScore(score);
         ShowScorePopup();
     }
